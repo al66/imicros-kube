@@ -11,4 +11,5 @@ spec:
         backend:
           service:
             name: nats
-            port: monitor
+            port:
+              name: monitor
