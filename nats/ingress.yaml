@@ -11,4 +11,5 @@ spec:
         backend:
           service:
             name: nats
-            port: 8222
+            port: 
+              number: 8222
