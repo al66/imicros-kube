@@ -1,0 +1,9 @@
+apiVersion: traefik.containo.us/v1
+kind: Middleware
+metadata:
+  name: api
+  namespace: traefik
+spec:
+  stripPrefix:
+    prefixes:
+      - /api
