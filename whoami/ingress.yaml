@@ -8,8 +8,7 @@ spec:
   rules:
   - http:
       paths:
-      - path: /whoami
-        pathType: Prefix
+      - path: /
         backend:
           service:
             name: whoami
