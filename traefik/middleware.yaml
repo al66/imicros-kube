@@ -1,9 +1,11 @@
 apiVersion: traefik.containo.us/v1
 kind: Middleware
 metadata:
-  name: api
+  name: stripprefix
   namespace: traefik
 spec:
   stripPrefix:
     prefixes:
       - /api
+      - /app
+      - /whoami

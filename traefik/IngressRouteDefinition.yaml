@@ -8,9 +8,6 @@ spec:
   versions:
   - name: v1alpha1
     served: true
-    storage: false
-  - name: v1
-    served: true
     storage: true
   names:
     kind: IngressRoute
@@ -28,9 +25,6 @@ spec:
   group: traefik.containo.us
   versions:
   - name: v1alpha1
-    served: true
-    storage: false
-  - name: v1
     served: true
     storage: true
   names:
@@ -50,9 +44,6 @@ spec:
   versions:
   - name: v1alpha1
     served: true
-    storage: false
-  - name: v1
-    served: true
     storage: true
   names:
     kind: Middleware
@@ -71,9 +62,6 @@ spec:
   versions:
   - name: v1alpha1
     served: true
-    storage: false
-  - name: v1
-    served: true
     storage: true
   names:
     kind: TLSOption
@@ -91,9 +79,6 @@ spec:
   group: traefik.containo.us
   versions:
   - name: v1alpha1
-    served: true
-    storage: false
-  - name: v1
     served: true
     storage: true
   names:
