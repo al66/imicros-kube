@@ -19,12 +19,11 @@ kind: IngressRoute
 metadata:
   name: ingressroutetls
   namespace: default
-  version: '0.1'
 spec:
   entryPoints:
     - websecure
   routes:
-  - match: Host(`test.imicros.de`) && PathPrefix(`/tls`)
+  - match: Host(`test.imicros.de`)
     kind: Rule
     services:
     - name: whoami
