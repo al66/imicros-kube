@@ -19,6 +19,7 @@ kind: IngressRoute
 metadata:
   name: ingressroutetls
   namespace: default
+  version: '0.1'
 spec:
   entryPoints:
     - websecure
