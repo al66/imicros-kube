@@ -3,6 +3,7 @@ kind: Ingress
 metadata:
   name: demo-nginx
 spec:
+  type: LoadBalancer
   rules:
   - host: test.imicros.de # CHANGE ME!
     http:
