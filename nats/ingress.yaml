@@ -2,12 +2,14 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: nats
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
   - http:
       paths:
       - path: /nats
-        pathType: Exact
+        pathType: Prefix
         backend:
           service:
             name: nats
