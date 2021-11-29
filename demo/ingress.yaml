@@ -8,7 +8,8 @@ spec:
     http:
       paths:
       # The * is needed so that all traffic gets redirected to nginx
-      - path: /*
+      - path: /
+        pathType: Prefix
         backend:
           service:
             name: demo-nginx
