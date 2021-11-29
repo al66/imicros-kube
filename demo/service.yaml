@@ -5,9 +5,9 @@ metadata:
 spec:
   selector:
     app: demo-nginx
-  type: LoadBalancer
   ports:
-  - protocol: "TCP"
+  - name: http
+    targetPort: 80
     port: 80
 ---
 apiVersion: v1
@@ -17,7 +17,6 @@ metadata:
 spec:
   selector:
     app: whoami
-  type: LoadBalancer
   ports:
   - name: http
     targetPort: 80
