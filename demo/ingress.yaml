@@ -1,0 +1,14 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: "demo-nginx"
+spec:
+  rules:
+  - host: test.imicros.de # CHANGE ME!
+    http:
+      paths:
+      # The * is needed so that all traffic gets redirected to nginx
+      - path: /*
+        backend:
+          serviceName: demo-nginx
+          servicePort: 80

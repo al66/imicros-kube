@@ -1,0 +1,26 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: demo-nginx
+  name: demo-nginx
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: demo-nginx
+    spec:
+      containers:
+      - name: demo-nginx
+        image: nginx
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: demo-nginx-configs
+          mountPath: /etc/nginx/conf.d
+      # Load the configuration files for nginx
+      volumes:
+        - name: demo-nginx-configs
+          configMap:
+            name: demo-nginx-config
