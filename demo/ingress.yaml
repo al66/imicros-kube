@@ -29,20 +29,4 @@ spec:
             name: whoami
             port:
               number: 80
-      - path: /
-        pathType: Exact
-        backend:
-          service:
-            name: demo-nginx
-            port:
-              number: 80
-    http:
-      paths:
-      - path: /
-        pathType: Exact
-        backend:
-          service:
-            name: whoami
-            port:
-              number: 80
               
