@@ -2,12 +2,13 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: demo-nginx
-  namespace: ingress
+  namespace: default
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   defaultBackend:
     service:
       name: demo-nginx
-      namespace: default
       port:
         number: 80  
   rules:
@@ -19,7 +20,6 @@ spec:
         backend:
           service:
             name: demo-nginx
-            namespace: default
             port:
               number: 80
       - path: /whoami
@@ -27,7 +27,6 @@ spec:
         backend:
           service:
             name: whoami
-            namespace: default
             port:
               number: 80
       - path: /
