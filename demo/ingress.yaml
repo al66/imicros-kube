@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: "demo-nginx"
+  name: demo-nginx
 spec:
   rules:
   - host: test.imicros.de # CHANGE ME!
@@ -10,5 +10,7 @@ spec:
       # The * is needed so that all traffic gets redirected to nginx
       - path: /*
         backend:
-          serviceName: demo-nginx
-          servicePort: 80
+          service:
+            name: demo-nginx
+            port:
+              number: 80

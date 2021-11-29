@@ -6,6 +6,11 @@ metadata:
   name: demo-nginx
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: demo-nginx
+  strategy:
+    type: Recreate
   template:
     metadata:
       labels:
