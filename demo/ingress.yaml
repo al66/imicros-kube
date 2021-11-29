@@ -4,6 +4,11 @@ metadata:
   name: demo-nginx
   namespace: ingress
 spec:
+  defaultBackend:
+    service:
+      name: demo-nginx
+      port:
+        number: 80  
   rules:
   - host: test.imicros.de # CHANGE ME!
     http:
