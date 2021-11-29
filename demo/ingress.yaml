@@ -7,6 +7,7 @@ spec:
   defaultBackend:
     service:
       name: demo-nginx
+      namespace: default
       port:
         number: 80  
   rules:
@@ -18,6 +19,7 @@ spec:
         backend:
           service:
             name: demo-nginx
+            namespace: default
             port:
               number: 80
       - path: /whoami
@@ -25,6 +27,7 @@ spec:
         backend:
           service:
             name: whoami
+            namespace: default
             port:
               number: 80
       - path: /
