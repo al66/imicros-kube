@@ -13,4 +13,4 @@ spec:
   accessModes:
     - ReadWriteOnce
   hostPath:
-    path: "/home/admin/cassandra/data"
+    path: "/home/admin/imicros-kube/cassandra/data"
