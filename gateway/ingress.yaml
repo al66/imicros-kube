@@ -18,7 +18,7 @@ spec:
           service:
             name: imicros-gateway
             port:
-              number: 80
+              number: 3000
   tls: # < placing a host in the TLS config will determine what ends up in the cert's subjectAltNames
   - hosts:
     - test.imicros.de
