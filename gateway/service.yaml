@@ -5,7 +5,6 @@ metadata:
   labels:
     app: imicros-gateway
 spec:
-  type: NodePort
   ports:
   - name: http
     port: 3000

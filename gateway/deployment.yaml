@@ -12,7 +12,7 @@ spec:
     metadata:
       labels:
         app: imicros-gateway
-        version: '0.15'
+        version: '0.1'
     spec:
       containers:
       - name: imicros-gateway
@@ -28,22 +28,21 @@ spec:
               name: service-token
               key: token
         - name: TRANSPORTER_NATS
-          # value: "nats://nats:4222" 
-          value: "nats://192.168.2.124:30284"
+          value: "nats://nats:4222" 
         - name: CASSANDRA_CONTACTPOINTS
-          value: "192.168.2.124"
+          value: "cassandra"
         - name: CASSANDRA_DATACENTER
           value: "datacenter1"
         - name: CASSANDRA_KEYSPACE_KEYS
           value: "imicros_keys"
         - name: CASSANDRA_PORT
-          value: "31326"
+          value: "9042"
         - name: CASSANDRA_USER
           value: "cassandra"
         - name: CASSANDRA_PASSWORD
           value: "cassandra"
         - name: NEO4J_URI
-          value: "bolt://192.168.2.124:30008"
+          value: "bolt://neo4j:7687"
         - name: NEO4J_USER
           value: "neo4j"
         - name: NEO4J_PASSWORD
