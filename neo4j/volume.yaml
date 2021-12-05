@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: cassandra
+  name: neo4j
   labels:
     type: local
-    app: cassandra
+    app: neo4j
     folder: data
 spec:
   storageClassName: manual
@@ -13,4 +13,4 @@ spec:
   accessModes:
     - ReadWriteOnce
   hostPath:
-    path: "/home/admin/cassandra/data"
+    path: "/home/admin/neo4j/data"

@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: imicros-gateway-deployment
+spec:
+  selector:
+    matchLabels:
+      app: imicros-gateway
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: imicros-gateway
+        version: '0.15'
+    spec:
+      containers:
+      - name: imicros-gateway
+        image: al66/imicros-backend:latest
+        env:
+        - name: SERVICES
+          value: "gateway, master, users"
+        - name: MASTER_TOKEN
+          value: "zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG"
+        - name: SERVICE_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: service-token
+              key: token
+        - name: TRANSPORTER_NATS
+          # value: "nats://nats:4222" 
+          value: "nats://192.168.2.124:30284"
+        - name: CASSANDRA_CONTACTPOINTS
+          value: "192.168.2.124"
+        - name: CASSANDRA_DATACENTER
+          value: "datacenter1"
+        - name: CASSANDRA_KEYSPACE_KEYS
+          value: "imicros_keys"
+        - name: CASSANDRA_PORT
+          value: "31326"
+        - name: CASSANDRA_USER
+          value: "cassandra"
+        - name: CASSANDRA_PASSWORD
+          value: "cassandra"
+        - name: NEO4J_URI
+          value: "bolt://192.168.2.124:30008"
+        - name: NEO4J_USER
+          value: "neo4j"
+        - name: NEO4J_PASSWORD
+          value: "neo4j"
+        - name: EVENT_OWNER_ID
+          value: "b07de817-2d8b-4470-9518-90f507bee154"
+          
