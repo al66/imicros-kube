@@ -12,7 +12,7 @@ spec:
     metadata:
       labels:
         app: imicros-users
-        version: '0.19'
+        version: '0.1
     spec:
       containers:
       - name: imicros-users

@@ -23,8 +23,9 @@ spec:
         args:
         #- server
         env:
-        #- name: NEO4J_AUTH
-        #  value: "none"
+        # TODO!!! Change default credentials neo4j/neo4j
+        - name: NEO4J_AUTH
+          value: "none"
         ports:
         - name: http
           protocol: TCP
