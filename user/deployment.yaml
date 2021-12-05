@@ -1,25 +1,26 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: imicros-gateway-deployment
+  name: imicros-users-deployment
 spec:
   selector:
     matchLabels:
-      app: imicros-gateway
+      app: imicros-users
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        app: imicros-gateway
-        version: '0.1'
+        app: imicros-users
+        version: '0.19'
     spec:
       containers:
-      - name: imicros-gateway
+      - name: imicros-users
         image: al66/imicros-backend:latest
+        imagePullPolicy: Always
         env:
         - name: SERVICES
-          value: "gateway, master"
+          value: "master, user, groups, agents"
         - name: MASTER_TOKEN
           value: "zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG"
         - name: SERVICE_TOKEN
@@ -47,6 +48,8 @@ spec:
           value: "neo4j"
         - name: NEO4J_PASSWORD
           value: "neo4j"
+        - name: AGENTS_JWT_SECRET
+          value: "my JWT secret - should be set as a Kubernetes secret"
         - name: EVENT_OWNER_ID
-          value: "b07de817-2d8b-4470-9518-90f507bee154"
+          value: "042302c2-058c-48a2-9d03-6389ddb9c644"
           
