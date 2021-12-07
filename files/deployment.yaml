@@ -43,7 +43,7 @@ spec:
         - name: CASSANDRA_KEYSPACE_KEYS
           value: "imicros_keys"
         - name: CASSANDRA_PORT
-          value: "31326"    
+          value: "9042"    
         - name: CASSANDRA_USER
           value: "cassandra"
         - name: CASSANDRA_PASSWORD
