@@ -1,0 +1,71 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: imicros-files-deployment
+spec:
+  selector:
+    matchLabels:
+      app: imicros-files
+  strategy:
+    type: Recreate
+  # keep no history of replica sets
+  revisionHistoryLimit: 0
+  template:
+    metadata:
+      labels:
+        app: imicros-files
+        version: '0.1'
+    spec:
+      containers:
+      - name: imicros-files
+        image: al66/imicros-backend:latest
+        imagePullPolicy: Always
+        env:
+        - name: SERVICES
+          value: "master, minio, acl"
+        - name: MASTER_TOKEN
+          value: "zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG"
+        - name: SERVICE_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: service-token
+              key: token
+        - name: TRANSPORTER_NATS
+          value: "nats://nats:4222" 
+        # jwt secret -> acl
+        - name: JWT_SECRET
+          value: "zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG"
+        # cassandra -> master, keys
+        - name: CASSANDRA_CONTACTPOINTS
+          value: "cassandra"
+        - name: CASSANDRA_DATACENTER
+          value: "datacenter1"
+        - name: CASSANDRA_KEYSPACE_KEYS
+          value: "imicros_keys"
+        - name: CASSANDRA_PORT
+          value: "31326"    
+        - name: CASSANDRA_USER
+          value: "cassandra"
+        - name: CASSANDRA_PASSWORD
+          value: "cassandra"
+        # minio -> minio
+        - name: MINIO_ENDPOINT
+          value: "minio"
+        - name: MINIO_PORT
+          value: "9000"
+        - name: MINIO_NO_SSL
+          value: "true"
+        - name: MINIO_REGION_NAME
+          value: "eu-central-1"
+        - name: MINIO_ACCESS_KEY
+          value: "minio"
+        - name: MINIO_SECRET_KEY
+          value: "minio123"
+        # neo4j -> acl
+        - name: NEO4J_URI
+          value: "bolt://neo4j:7687"
+        - name: NEO4J_USER
+          value: "neo4j"
+        - name: NEO4J_PASSWORD
+          value: "neo4j"
+          
