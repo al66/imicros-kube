@@ -1,26 +1,26 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: imicros-users-deployment
+  name: imicros-flow-deployment
 spec:
   selector:
     matchLabels:
-      app: imicros-users
+      app: imicros-flow
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        app: imicros-users
+        app: imicros-flow
         version: '0.1'
     spec:
       containers:
-      - name: imicros-users
+      - name: imicros-flow
         image: al66/imicros-backend:latest
         imagePullPolicy: Always
         env:
         - name: SERVICES
-          value: "master, user, groups, agents, acl"
+          value: "master, acl, activity, context, control, events, feel, instance, next, query, sequence, timer"
         - name: MASTER_TOKEN
           value: "zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG"
         - name: SERVICE_TOKEN
@@ -28,6 +28,17 @@ spec:
             secretKeyRef:
               name: service-token
               key: token
+        - name: SERVICE_ID
+          value: "2ae45f6a-1bb7-44cc-8e4a-26661febea29"
+        - name: SERVICE_AUTH_TOKEN
+          value: "a5f5d204974ee3de0cc7535ff8f7b3565230c42ee05499dda718746a6b48c24f29735a692568fc0acccc9b088bc04d3299af82a16068a651c8024a03f19232af"
+        - name: ADMIN_GROUP_ID
+          value: "096f1dff-681a-4746-b5cd-2228f69630c7"
+        - name: EVENT_OWNER_ID
+          value: "096f1dff-681a-4746-b5cd-2228f69630c7"
+        # jwt secret -> acl
+        - name: JWT_SECRET
+          value: "zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG"
         - name: TRANSPORTER_NATS
           value: "nats://nats:4222" 
         - name: CASSANDRA_CONTACTPOINTS
@@ -48,12 +59,4 @@ spec:
           value: "neo4j"
         - name: NEO4J_PASSWORD
           value: "neo4j"
-        # jwt secret -> acl
-        - name: JWT_SECRET
-          value: "zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG"
-        # jwt secret -> agents
-        - name: AGENTS_JWT_SECRET
-          value: "my JWT secret - should be set as a Kubernetes secret"
-        - name: EVENT_OWNER_ID
-          value: "096f1dff-681a-4746-b5cd-2228f69630c7"
           
