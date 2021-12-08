@@ -29,9 +29,9 @@ spec:
               name: service-token
               key: token
         - name: SERVICE_ID
-          value: "2ae45f6a-1bb7-44cc-8e4a-26661febea29"
+          value: "c73d1641-e677-458c-aa6b-c5a328805352"
         - name: SERVICE_AUTH_TOKEN
-          value: "a5f5d204974ee3de0cc7535ff8f7b3565230c42ee05499dda718746a6b48c24f29735a692568fc0acccc9b088bc04d3299af82a16068a651c8024a03f19232af"
+          value: "5506972b7d4e9f50e269df8a5aff4bfb9ed0738e0ac79aac5fd8c06c063976c5d2ff2449bdf7e4044578310bfde59f05d0a7f0c702b3ecc4d7156c7e747c45b1"
         - name: ADMIN_GROUP_ID
           value: "096f1dff-681a-4746-b5cd-2228f69630c7"
         - name: EVENT_OWNER_ID
