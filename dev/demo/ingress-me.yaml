@@ -4,9 +4,9 @@ metadata:
   name: demo-me
   namespace: default    # namespace must be the same as the backend service!
   annotations:
-    # nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/rewrite-target: /
     cert-manager.io/cluster-issuer: letsencrypt
-    acme.cert-manager.io/http01-edit-in-place: "true"
+    # acme.cert-manager.io/http01-edit-in-place: "true"
 spec:
   rules:
   - host: dev.imicros.de # CHANGE ME!
