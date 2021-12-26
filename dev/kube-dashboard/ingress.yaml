@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: demo-me
+  name: kube-dashboard
   namespace: default    # namespace must be the same as the backend service!
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /$1
