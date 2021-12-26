@@ -5,7 +5,6 @@ metadata:
   namespace: default    # namespace must be the same as the backend service!
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
-    nginx.ingress.kubernetes.io/force-ssl-redirect: \"false\"
 spec:
   rules:
   - http:
