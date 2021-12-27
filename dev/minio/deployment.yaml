@@ -19,7 +19,8 @@ spec:
           claimName: minio
       containers:
       - name: minio
-        image: minio/minio:latest
+        # image: minio/minio:latest
+        image: quay.io/minio/minio:RELEASE.2021-12-20T22-07-16Z
         env:
         - name: MINIO_ROOT_USER
           valueFrom:
@@ -34,7 +35,9 @@ spec:
         - name: MINIO_REGION_NAME
           value: "eu-central-1"
         command: 
-        -  "minio server /storage"
+        - "/bin/sh"
+        - "-ce"
+        - "/usr/bin/docker-entrypoint.sh minio server /storage -S /etc/minio/certs/ --address :9000 --console-address :9001"
         # - "minio server /storage --console-address :9001"
         ports:
         - name: api
