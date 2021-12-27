@@ -33,9 +33,7 @@ spec:
               key: password
         - name: MINIO_REGION_NAME
           value: "eu-central-1"
-        args:
-        - server 
-        - /storage
+        args: ["server /storage"]
         # - "minio server /storage --console-address :9001"
         ports:
         - name: api
