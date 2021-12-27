@@ -1,3 +1,6 @@
+# not working!! due to tls in the browser the browser uses bolt+s:// 
+#               and we cannot route this to HTTP in the backend
+#               
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -6,7 +9,7 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /$1
     cert-manager.io/cluster-issuer: letsencrypt
-    nginx.ingress.kubernetes.io/backend-protocol: HTTPS
+    # nginx.ingress.kubernetes.io/backend-protocol: HTTPS
     # nginx.ingress.kubernetes.io/ssl-redirect: "true"
 spec:
   rules:
