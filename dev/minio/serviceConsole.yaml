@@ -1,18 +1,16 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: minio
+  name: minio-console
   labels:
     app: minio
 spec:
+  type: nodePort
   ports:
-  - name: api
-    port: 9000
-    targetPort: 9000
-    protocol: TCP
   - name: console
     port: 9001
     targetPort: 9001
     protocol: TCP
+    nodePort: 33900
   selector:
     app: minio
