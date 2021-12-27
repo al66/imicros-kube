@@ -37,7 +37,7 @@ spec:
         command: 
         - "/bin/sh"
         - "-ce"
-        - "/usr/bin/docker-entrypoint.sh minio server /storage -S /etc/minio/certs/ --address :9000 --console-address :9001"
+        - "/usr/bin/docker-entrypoint.sh minio server /storage -S /etc/minio/certs/ --address :9000 --console-address dev.imicros.de:9001"
         # - "minio server /storage --console-address :9001"
         ports:
         - name: api
