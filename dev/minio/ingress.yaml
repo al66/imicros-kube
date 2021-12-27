@@ -19,7 +19,7 @@ spec:
           service:
             name: minio
             port:
-              number: 9001
+              number: 9000
   tls: # < placing a host in the TLS config will determine what ends up in the cert's subjectAltNames
   - hosts:
     - dev.imicros.de
