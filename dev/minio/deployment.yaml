@@ -37,6 +37,7 @@ spec:
               key: password
         - name: MINIO_REGION_NAME
           value: "eu-central-1"
+        command: ["minio server /mnt/storage --console-address ':9001'"]
         ports:
         - name: api
           containerPort: 9000
@@ -45,4 +46,4 @@ spec:
           containerPort: 9001
         volumeMounts:
         - name: storage # must match the volume name, above
-          mountPath: "/storage"
+          mountPath: "/mnt/storage"
