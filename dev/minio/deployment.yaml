@@ -34,10 +34,7 @@ spec:
         - name: MINIO_REGION_NAME
           value: "eu-central-1"
         command: 
-        - "minio"
-        - "server"
-        - "/storage"
-        - "--console-address :9001"
+        - "minio server /storage --console-address :9001"
         ports:
         - name: api
           containerPort: 9000
