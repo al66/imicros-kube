@@ -27,12 +27,12 @@ spec:
         env:
         - name: MINIO_ROOT_USER
           valueFrom:
-            secretRefKey:
+            secretKeyRef:
               name: minio-root
               key: user
         - name: MINIO_ROOT_PASSWORD
           valueFrom:
-            secretRefKey:
+            secretKeyRef:
               name: minio-root
               key: password
         - name: MINIO_REGION_NAME
