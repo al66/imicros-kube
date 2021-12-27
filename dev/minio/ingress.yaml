@@ -1,5 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
+# doesn't work at all: minio console doesn't support prefix and tries to load from <domain>/statics/...
+# we must use a service type NodePort instead and secure it separately
 metadata:
   name: minio-console
   namespace: default    # namespace must be the same as the backend service!

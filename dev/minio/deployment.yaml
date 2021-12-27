@@ -21,6 +21,7 @@ spec:
       - name: minio
         # image: minio/minio:latest
         image: quay.io/minio/minio:RELEASE.2021-12-20T22-07-16Z
+        # TODO: tls certs for minio console
         env:
         - name: MINIO_ROOT_USER
           valueFrom:
