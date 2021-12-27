@@ -20,13 +20,6 @@ spec:
             name: neo4j
             port:
               number: 7474
-      - path: /bolt/(.*)
-        pathType: Prefix
-        backend:
-          service:
-            name: neo4j
-            port:
-              number: 7687
   tls: # < placing a host in the TLS config will determine what ends up in the cert's subjectAltNames
   - hosts:
     - dev.imicros.de
