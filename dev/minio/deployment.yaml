@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: minio-deployment
+spec:
+  selector:
+    matchLabels:
+      app: minio
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: minio
+    spec:
+      volumes:
+      - name: storage
+        persistentVolumeClaim:
+          claimName: minio
+      containers:
+      - name: minio
+        image: minio/minio:latest
+        args:
+        - server 
+        - /storage 
+        - --console-address ":9001"
+        env:
+        - name: MINIO_ROOT_USER
+          valueFrom:
+            secretRefKey:
+              name: minio-root
+              key: user
+        - name: MINIO_ROOT_PASSWORD
+          valueFrom:
+            secretRefKey:
+              name: minio-root
+              key: password
+        - name: MINIO_REGION_NAME
+          value: "eu-central-1"
+        ports:
+        - name: api
+          containerPort: 9000
+        - name: console
+          protocol: TCP
+          containerPort: 9001
+        volumeMounts:
+        - name: storage # must match the volume name, above
+          mountPath: "/storage"
