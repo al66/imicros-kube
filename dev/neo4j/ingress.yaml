@@ -1,12 +1,12 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: minio-console
+  name: neo4j-browser
   namespace: default    # namespace must be the same as the backend service!
   annotations:
     # nginx.ingress.kubernetes.io/rewrite-target: /$1
     cert-manager.io/cluster-issuer: letsencrypt
-    nginx.ingress.kubernetes.io/backend-protocol: HTTP
+    nginx.ingress.kubernetes.io/backend-protocol: HTTPS
     # nginx.ingress.kubernetes.io/ssl-redirect: "true"
 spec:
   rules:
