@@ -5,7 +5,7 @@ metadata:
   labels:
     app: minio
 spec:
-  type: nodePort
+  type: NodePort
   ports:
   - name: console
     port: 9001
