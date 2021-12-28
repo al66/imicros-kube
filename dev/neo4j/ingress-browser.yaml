@@ -6,7 +6,7 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /$1
     cert-manager.io/cluster-issuer: letsencrypt
-    nginx.ingress.kubernetes.io/backend-protocol: HTTP
+    nginx.ingress.kubernetes.io/backend-protocol: HTTPS
     # nginx.ingress.kubernetes.io/ssl-redirect: "true"
 spec:
   rules:
@@ -19,7 +19,7 @@ spec:
           service:
             name: neo4j
             port:
-              number: 7474
+              number: 7473
   tls: # < placing a host in the TLS config will determine what ends up in the cert's subjectAltNames
   - hosts:
     - dev.imicros.de
