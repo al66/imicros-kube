@@ -18,7 +18,11 @@ spec:
       - name: nats
         image: nats
         command:
-        - "nats-server --user admin --pass xyz"
+        - "nats-server"
+        - "--user
+        - "admin"
+        - "--pass"
+        - "xyz0123456789"
         env:
         #- name: ANY
         #  value: "none"
