@@ -19,7 +19,7 @@ spec:
         image: nats
         command:
         - "nats-server"
-        - "--user
+        - "--user"
         - "admin"
         - "--pass"
         - "xyz0123456789"
