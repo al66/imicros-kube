@@ -1,3 +1,7 @@
+#
+# DEV only
+# Doesn't work at all: neo tries to connect backend with bolt+s://, which is not working with the node port 
+# 
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:

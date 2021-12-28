@@ -1,4 +1,6 @@
+#
 # dev only!! the communication will be unsecure!!
+#
 apiVersion: v1
 kind: Service
 metadata:
@@ -18,5 +20,10 @@ spec:
     targetPort: 7687
     protocol: TCP
     nodePort: 31121
+  - name: https
+    port: 7473
+    targetPort: 7473
+    protocol: TCP
+    nodePort: 31122
   selector:
     app: neo4j
