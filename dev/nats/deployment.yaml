@@ -17,8 +17,8 @@ spec:
       containers:
       - name: nats
         image: nats
-        args:
-        - "--user admin --pass xyz"
+        command:
+        - "nats-server --user admin --pass xyz"
         env:
         #- name: ANY
         #  value: "none"
