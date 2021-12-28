@@ -17,8 +17,8 @@ spec:
       containers:
       - name: nats
         image: nats
-        command:
-        - "nats server"
+        # command:
+        # - "nats server"
         # - "--user"
         # - "admin"
         # - "--pass"
