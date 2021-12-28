@@ -1,5 +1,5 @@
 #
-# dev only!! the communication will be unsecure!!
+# dev only!! no authentication!!
 #
 apiVersion: v1
 kind: Service
