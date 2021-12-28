@@ -4,14 +4,21 @@ metadata:
   name: nats
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
+    cert-manager.io/cluster-issuer: letsencrypt
+    nginx.ingress.kubernetes.io/backend-protocol: HTTP
 spec:
   rules:
+  - host: dev.imicros.de # CHANGE ME!
   - http:
       paths:
-      - path: /nats
+      - path: /nats/(.*)
         pathType: Prefix
         backend:
           service:
             name: nats
             port: 
               number: 8222
+  tls: # < placing a host in the TLS config will determine what ends up in the cert's subjectAltNames
+  - hosts:
+    - dev.imicros.de
+    secretName: imicros-cert # < cert-manager will store the created certificate in this secret.              
