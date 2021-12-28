@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nats-deployment
+spec:
+  selector:
+    matchLabels:
+      app: nats
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: nats
+    spec:
+      hostname: nats
+      containers:
+      - name: nats
+        image: nats
+        command: 
+        - "nats-main --user admin --pass xyz
+        args:
+        #- server
+        env:
+        #- name: ANY
+        #  value: "none"
+        ports:
+        - name: client
+          protocol: TCP
+          containerPort: 4222
+        - name: monitor
+          protocol: TCP
+          containerPort: 8222
+        - name: cluster
+          protocol: TCP
+          containerPort: 6222
