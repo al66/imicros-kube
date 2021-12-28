@@ -1,3 +1,6 @@
+#
+# dev only!! the communication will be unsecure!!
+#
 apiVersion: v1
 kind: Service
 metadata:
@@ -9,11 +12,6 @@ spec:
     app: nats
   type: NodePort
   ports:
-  - name: client
-    port: 4222
-    targetPort: 4222
-    protocol: TCP
-    nodePort: 31131
   - name: monitor
     port: 8222
     targetPort: 8222
