@@ -18,7 +18,7 @@ spec:
       - name: nats
         image: nats
         command: 
-        - "nats-main --user admin --pass xyz
+        - "nats-main --user admin --pass xyz"
         args:
         #- server
         env:
