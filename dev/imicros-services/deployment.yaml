@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: imicros-services-deployment
+spec:
+  selector:
+    matchLabels:
+      app: imicros-services
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: imicros-services
+        version: '0.1'
+    spec:
+      containers:
+      - name: imicros-services
+        image: al66/imicros-backend:latest
+        imagePullPolicy: Always
+        env:
+        # Services of this node
+        - name: SERVICES
+          value: "mails, rules, template"
+        # Transporter settings
+        - name: TRANSPORTER_NATS
+          value: "nats://nats:4222" 
+          

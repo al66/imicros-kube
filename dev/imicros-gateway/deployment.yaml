@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: imicros-gateway-deployment
+spec:
+  selector:
+    matchLabels:
+      app: imicros-gateway
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: imicros-gateway
+        version: '0.1'
+    spec:
+      containers:
+      - name: imicros-gateway
+        image: al66/imicros-backend:latest
+        imagePullPolicy: Always
+        env:
+        # Services of this node
+        - name: SERVICES
+          value: "gateway, master"
+        # Transporter settings
+        - name: TRANSPORTER_NATS
+          value: "nats://nats:4222" 
+        # master+keys service settings
+        - name: MASTER_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: master-token
+              key: token
+        - name: SERVICE_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: service-token
+              key: token
+        - name: CASSANDRA_CONTACTPOINTS
+          value: "cassandra"
+        - name: CASSANDRA_DATACENTER
+          value: "datacenter1"
+        - name: CASSANDRA_KEYSPACE_KEYS
+          value: "imicros_keys"
+        - name: CASSANDRA_PORT
+          value: "9042"
+        - name: CASSANDRA_USER
+          valueFrom:
+            secretKeyRef:
+              name: cassandra-root
+              key: user
+        - name: CASSANDRA_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: cassandra-root
+              key: password

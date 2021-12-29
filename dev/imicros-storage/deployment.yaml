@@ -1,0 +1,94 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: imicros-files-deployment
+spec:
+  selector:
+    matchLabels:
+      app: imicros-files
+  strategy:
+    type: Recreate
+  # keep no history of replica sets
+  revisionHistoryLimit: 0
+  template:
+    metadata:
+      labels:
+        app: imicros-files
+        version: '0.1'
+    spec:
+      containers:
+      - name: imicros-files
+        image: al66/imicros-backend:latest
+        imagePullPolicy: Always
+        env:
+        # Services of this node
+        - name: SERVICES
+          value: "master, minio, acl"
+        # Transporter settings
+        - name: TRANSPORTER_NATS
+          value: "nats://nats:4222" 
+        # master+keys service settings
+        - name: MASTER_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: master-token
+              key: token
+        - name: SERVICE_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: service-token
+              key: token
+        - name: CASSANDRA_CONTACTPOINTS
+          value: "cassandra"
+        - name: CASSANDRA_DATACENTER
+          value: "datacenter1"
+        - name: CASSANDRA_KEYSPACE_KEYS
+          value: "imicros_keys"
+        - name: CASSANDRA_PORT
+          value: "9042"    
+        - name: CASSANDRA_USER
+          valueFrom:
+            secretKeyRef:
+              name: cassandra-root
+              key: user
+        - name: CASSANDRA_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: cassandra-root
+              key: password
+        # minio service settings
+        - name: MINIO_ENDPOINT
+          value: "minio"
+        - name: MINIO_PORT
+          value: "9000"
+        - name: MINIO_NO_SSL
+          value: "true"
+        - name: MINIO_REGION_NAME
+          value: "eu-central-1"
+        - name: MINIO_ACCESS_KEY
+          valueFrom:
+            secretKeyRef:
+              name: minio-root
+              key: user
+        - name: MINIO_SECRET_KEY
+          valueFrom:
+            secretKeyRef:
+              name: minio-root
+              key: password
+        # auth services settings - db
+        - name: NEO4J_URI
+          value: "bolt://neo4j:7687"
+        - name: NEO4J_USER
+          valueFrom:
+            secretKeyRef:
+              name: neo4j-root
+              key: user
+        - name: NEO4J_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: neo4j-root
+              key: password
+        # acl service settings - jwt secret
+        - name: JWT_SECRET
+          value: "zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG"
+          

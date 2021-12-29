@@ -1,0 +1,79 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: imicros-users-deployment
+spec:
+  selector:
+    matchLabels:
+      app: imicros-users
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: imicros-users
+        version: '0.1'
+    spec:
+      containers:
+      - name: imicros-users
+        image: al66/imicros-backend:latest
+        imagePullPolicy: Always
+        env:
+        # Services of this node
+        - name: SERVICES
+          value: "master, user, groups, agents, acl"
+        # Broker settings - transporter
+        - name: TRANSPORTER_NATS
+          value: "nats://nats:4222" 
+        # Service settings - token -> master,keys
+        - name: MASTER_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: master-token
+              key: token
+        - name: SERVICE_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: service-token
+              key: token
+        # Service settings - db -> master,keys
+        - name: CASSANDRA_CONTACTPOINTS
+          value: "cassandra"
+        - name: CASSANDRA_DATACENTER
+          value: "datacenter1"
+        - name: CASSANDRA_KEYSPACE_KEYS
+          value: "imicros_keys"
+        - name: CASSANDRA_PORT
+          value: "9042"
+        - name: CASSANDRA_USER
+          valueFrom:
+            secretKeyRef:
+              name: cassandra-root
+              key: user
+        - name: CASSANDRA_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: cassandra-root
+              key: password
+        # Services settings - db -> user, groups, agents, acl
+        - name: NEO4J_URI
+          value: "bolt://neo4j:7687"
+        - name: NEO4J_USER
+          valueFrom:
+            secretKeyRef:
+              name: neo4j-root
+              key: user
+        - name: NEO4J_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: neo4j-root
+              key: password
+        # Service settings - jwt secret -> acl
+        - name: JWT_SECRET
+          value: "zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG"
+        # Service settings - jwt secret -> agents
+        - name: AGENTS_JWT_SECRET
+          value: "my JWT secret - should be set as a Kubernetes secret"
+        - name: EVENT_OWNER_ID
+          value: "096f1dff-681a-4746-b5cd-2228f69630c7"
+          
