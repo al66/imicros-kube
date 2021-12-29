@@ -13,7 +13,7 @@ spec:
   - host: dev.imicros.de # CHANGE ME!
     http:
       paths:
-      - path: /app/(.*)
+      - path: /(.*)
         pathType: Prefix
         backend:
           service:
