@@ -88,7 +88,10 @@ spec:
             secretKeyRef:
               name: neo4j-root
               key: password
-        # acl service settings - jwt secret
+        # Service settings - jwt secret -> acl, agents
         - name: JWT_SECRET
-          value: "zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG"
+          valueFrom:
+            secretKeyRef:
+              name: jwt-secret
+              key: secret
           
