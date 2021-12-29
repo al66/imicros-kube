@@ -19,9 +19,10 @@ spec:
         image: al66/imicros-backend:latest
         imagePullPolicy: Always
         env:
+        # Services of this node
         - name: SERVICES
           value: "master, acl, activity, context, control, events, feel, instance, next, query, sequence, timer"
-        # Transporter settings
+        # Broker settings - transporter
         - name: TRANSPORTER_NATS
           value: "nats://nats:4222" 
         # master+keys service settings
@@ -40,12 +41,16 @@ spec:
         - name: SERVICE_AUTH_TOKEN
           value: "5506972b7d4e9f50e269df8a5aff4bfb9ed0738e0ac79aac5fd8c06c063976c5d2ff2449bdf7e4044578310bfde59f05d0a7f0c702b3ecc4d7156c7e747c45b1"
         - name: ADMIN_GROUP_ID
-          value: "096f1dff-681a-4746-b5cd-2228f69630c7"
+          valueFrom:
+            secretKeyRef:
+              name: admin-group
+              key: id
         - name: EVENT_OWNER_ID
-          value: "096f1dff-681a-4746-b5cd-2228f69630c7"
-        # jwt secret -> acl
-        - name: JWT_SECRET
-          value: "zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG"
+          valueFrom:
+            secretKeyRef:
+              name: admin-group
+              key: id
+        # Service settings - db -> master,keys, context
         - name: CASSANDRA_CONTACTPOINTS
           value: "cassandra"
         - name: CASSANDRA_DATACENTER
@@ -64,7 +69,7 @@ spec:
             secretKeyRef:
               name: cassandra-root
               key: password
-        # acl,control,query services settings - db
+        # Service settings - db -> acl, control, instance, query
         - name: NEO4J_URI
           value: "bolt://neo4j:7687"
         - name: NEO4J_USER
@@ -77,4 +82,10 @@ spec:
             secretKeyRef:
               name: neo4j-root
               key: password
+        # Service settings - jwt secret -> acl
+        - name: JWT_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: jwt-secret
+              key: secret
           

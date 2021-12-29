@@ -68,12 +68,32 @@ spec:
             secretKeyRef:
               name: neo4j-root
               key: password
-        # Service settings - jwt secret -> acl
+        # Service settings - jwt secret -> acl, agents
         - name: JWT_SECRET
-          value: "zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG"
-        # Service settings - jwt secret -> agents
-        - name: AGENTS_JWT_SECRET
-          value: "my JWT secret - should be set as a Kubernetes secret"
+          valueFrom:
+            secretKeyRef:
+              name: jwt-secret
+              key: secret
+        # Service settings - initial group -> groups
+        - name: ADMIN_GROUP_ID
+          valueFrom:
+            secretKeyRef:
+              name: admin-group
+              key: id
+        - name: ADMIN_GROUP_NAME
+          valueFrom:
+            secretKeyRef:
+              name: admin-group
+              key: name
+        - name: ADMIN_GROUP_MEMBER
+          valueFrom:
+            secretKeyRef:
+              name: admin-group
+              key: member
+        # Service settings - default event owner -> user
         - name: EVENT_OWNER_ID
-          value: "096f1dff-681a-4746-b5cd-2228f69630c7"
+          valueFrom:
+            secretKeyRef:
+              name: admin-group
+              key: id
           
