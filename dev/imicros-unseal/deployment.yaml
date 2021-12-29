@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: imicros-unseal-deployment
+spec:
+  selector:
+    matchLabels:
+      app: imicros-unseal
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: imicros-unseal
+        version: '0.1'
+    spec:
+      containers:
+      - name: imicros-unseal-1
+        image: al66/imicros-unseal:latest
+        imagePullPolicy: Always
+        env:
+        - name: HOST
+          value: "https://dev.imicros.de/api"
+        - name: SHARE
+          valueFrom:
+            secretKeyRef:
+              name: master-shares
+              key: share1
+        - name: SERVICE
+          value: "master" 
+      - name: imicros-unseal-2
+        image: al66/imicros-unseal:latest
+        env:
+        - name: HOST
+          value: "https://dev.imicros.de/api"
+        - name: SHARE
+          valueFrom:
+            secretKeyRef:
+              name: master-shares
+              key: share2
+        - name: SERVICE
+          value: "master" 
+      - name: imicros-unseal-3
+        image: al66/imicros-unseal:latest
+        env:
+        - name: HOST
+          value: "https://dev.imicros.de/api"
+        - name: SHARE
+          valueFrom:
+            secretKeyRef:
+              name: master-shares
+              key: share3
+        - name: SERVICE
+          value: "master" 
+          
