@@ -36,10 +36,18 @@ spec:
             secretKeyRef:
               name: service-token
               key: token
+        # Service settings - agent id + token -> control
         - name: SERVICE_ID
-          value: "c73d1641-e677-458c-aa6b-c5a328805352"
+          valueFrom:
+            secretKeyRef:
+              name: flow-service
+              key: id
         - name: SERVICE_AUTH_TOKEN
-          value: "5506972b7d4e9f50e269df8a5aff4bfb9ed0738e0ac79aac5fd8c06c063976c5d2ff2449bdf7e4044578310bfde59f05d0a7f0c702b3ecc4d7156c7e747c45b1"
+          valueFrom:
+            secretKeyRef:
+              name: flow-service
+              key: token
+        # Service settings - admin group -> ??
         - name: ADMIN_GROUP_ID
           valueFrom:
             secretKeyRef:
