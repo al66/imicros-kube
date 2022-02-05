@@ -21,7 +21,7 @@ spec:
         env:
         # Services of this node
         - name: SERVICES
-          value: "master, acl, activity, context, control, events, feel, instance, next, query, sequence, timer"
+          value: "master, acl, activity, context, control, events, feel, instance, next, query, sequence, timer, queue"
         # Broker settings - transporter
         - name: TRANSPORTER_NATS
           value: "nats://nats:4222" 
