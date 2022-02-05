@@ -65,6 +65,8 @@ spec:
           value: "datacenter1"
         - name: CASSANDRA_KEYSPACE_KEYS
           value: "imicros_keys"
+        - name: CASSANDRA_KEYSPACE_QUEUE
+          value: "imicros_queue"
         - name: CASSANDRA_PORT
           value: "9042"
         - name: CASSANDRA_USER
