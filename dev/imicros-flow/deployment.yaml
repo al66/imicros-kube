@@ -12,7 +12,7 @@ spec:
     metadata:
       labels:
         app: imicros-flow
-        version: '0.1'
+        version: '0.2'
     spec:
       containers:
       - name: imicros-flow
