@@ -12,7 +12,7 @@ spec:
     metadata:
       labels:
         app: imicros-services
-        version: '0.1'
+        version: '0.2'
     spec:
       containers:
       - name: imicros-services
@@ -21,7 +21,7 @@ spec:
         env:
         # Services of this node
         - name: SERVICES
-          value: "mails, rules, template"
+          value: "mails, rules, template, jsonmap"
         # Transporter settings
         - name: TRANSPORTER_NATS
           value: "nats://nats:4222" 
