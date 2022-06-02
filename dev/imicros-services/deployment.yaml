@@ -21,7 +21,7 @@ spec:
         env:
         # Services of this node
         - name: SERVICES
-          value: "mails, rules, template, jsonmap"
+          value: "mails, rules, template, jsonmap, feel"
         # Transporter settings
         - name: TRANSPORTER_NATS
           value: "nats://nats:4222" 
