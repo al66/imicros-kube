@@ -20,8 +20,7 @@ spec:
       containers:
       - name: minio
         # image: minio/minio:latest
-        image: quay.io/minio/minio:RELEASE.2021-12-20T22-07-16Z
-        # TODO: tls certs for minio console
+        image: quay.io/minio/minio:RELEASE.2022-04-29T01-27-09Z
         env:
         - name: MINIO_ROOT_USER
           valueFrom:
@@ -35,6 +34,8 @@ spec:
               key: password
         - name: MINIO_REGION_NAME
           value: "eu-central-1"
+        - name: MINIO_BROWSER_REDIRECT_URL
+          value: https://dev.imicros.de/minio/
         command: 
         - "/bin/sh"
         - "-ce"
