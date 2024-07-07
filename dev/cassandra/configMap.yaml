@@ -15,5 +15,5 @@ data:
     #!/bin/bash
 
     /usr/local/apache-cassandra/scripts/jvm_options.sh
-
-    /run.sh
+    /opt/bitnami/scripts/cassandra/entrypoint.sh
+    /opt/bitnami/scripts/cassandra/run.sh
