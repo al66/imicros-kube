@@ -65,5 +65,5 @@ spec:
         - name: data # must match the volume name, above
           mountPath: "/bitnami"
         - name: scripts
-              mountPath: /usr/local/apache-cassandra/scripts
+          mountPath: /usr/local/apache-cassandra/scripts
           
