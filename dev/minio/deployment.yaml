@@ -20,7 +20,6 @@ spec:
           claimName: minio
       containers:
       - name: minio
-        namespace: minio
         #image: minio/minio:latest
         #image: quay.io/minio/minio:RELEASE.2022-04-29T01-27-09Z
         image: minio/minio
