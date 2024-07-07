@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: cassandra-deployment
+  namespace: cassandra
 spec:
   selector:
     matchLabels:
@@ -13,10 +14,16 @@ spec:
       labels:
         app: cassandra
     spec:
+      securityContext:
+        runAsUser: 1001
       volumes:
       - name: data
         persistentVolumeClaim:
           claimName: cassandra
+      - name: jmx-secret
+        secret:
+            defaultMode: 0666
+            secretName: cassandra-jmx
       containers:
       - name: cassandra
         image: bitnami/cassandra:latest
@@ -31,6 +38,15 @@ spec:
             secretKeyRef:
               name: cassandra-root
               key: password
+        - name: JVM_OPTS
+          value: "    -XX:+AlwaysPreTouch
+                      -Dorg.slf4j.simpleLogger.showDateTime=true
+                      -Dorg.slf4j.simpleLogger.dateTimeFormat=\"yyyy-MM-dd'T'HH:mm:ss\"
+                      -Dcom.sun.management.jmxremote.ssl=false
+                      -Dcom.sun.management.jmxremote.authenticate=false
+                      -Dcom.sun.management.jmxremote.port=7199
+                      -Dcom.sun.management.jmxremote.local.only=false
+                      -Dnetworkaddress.cache.ttl=15"
         ports:
         - containerPort: 7000
           name: intra-node
