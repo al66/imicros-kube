@@ -20,7 +20,8 @@ spec:
       containers:
       - name: minio
         # image: minio/minio:latest
-        image: quay.io/minio/minio:RELEASE.2022-04-29T01-27-09Z
+        #image: quay.io/minio/minio:RELEASE.2022-04-29T01-27-09Z
+        image: minio/minio
         env:
         - name: MINIO_ROOT_USER
           valueFrom:
@@ -34,12 +35,14 @@ spec:
               key: password
         - name: MINIO_REGION_NAME
           value: "eu-central-1"
-        - name: MINIO_BROWSER_REDIRECT_URL
-          value: https://dev.imicros.de/minio/
+        - name: MINIO_PROMETHEUS_AUTH_TYPE
+          value: "public"
+        #- name: MINIO_BROWSER_REDIRECT_URL
+        #  value: https://dev.imicros.de/minio/
         command: 
         - "/bin/sh"
         - "-ce"
-        - "/usr/bin/docker-entrypoint.sh minio server /storage -S /etc/minio/certs/ --address :9000 --console-address :9001"
+        - "/usr/bin/docker-entrypoint.sh minio server /data -S /etc/minio/certs/ --address :9000 --console-address :9001"
         # - "minio server /storage --console-address :9001"
         ports:
         - name: api
@@ -48,4 +51,4 @@ spec:
           containerPort: 9001
         volumeMounts:
         - name: storage # must match the volume name, above
-          mountPath: "/storage"
+          mountPath: "/data"
