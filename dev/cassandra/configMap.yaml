@@ -10,7 +10,7 @@ data:
     #!/bin/bash
 
     # Todo: avoid this and add manage it with run.sh
-    echo "JVM_OPTS=\"\$JVM_OPTS {{ .Values.cassandraJvmOptions }}\"" >> /etc/cassandra/cassandra-env.sh
+    echo "JVM_OPTS=\"\$JVM_OPTS\" >> /opt/bitnami/scripts/cassandra/cassandra-env.sh
   run_override.sh: |-
     #!/bin/bash
 
