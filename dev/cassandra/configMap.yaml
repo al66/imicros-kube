@@ -1,0 +1,19 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: cassandra
+  namespace: cassandra
+  labels:
+    app: cassandra
+data:
+  jvm_options.sh: |-
+    #!/bin/bash
+
+    # Todo: avoid this and add manage it with run.sh
+    echo "JVM_OPTS=\"\$JVM_OPTS {{ .Values.cassandraJvmOptions }}\"" >> /etc/cassandra/cassandra-env.sh
+  run_override.sh: |-
+    #!/bin/bash
+
+    /usr/local/apache-cassandra/scripts/jvm_options.sh
+
+    /run.sh

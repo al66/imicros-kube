@@ -24,9 +24,14 @@ spec:
         secret:
             defaultMode: 0666
             secretName: cassandra-jmx
+      - name: scripts
+          configMap:
+            name: cassandra
+            defaultMode: 0775
       containers:
       - name: cassandra
         image: bitnami/cassandra:latest
+        command: ['/bin/sh', '-c', '/usr/local/apache-cassandra/scripts/run_override.sh']
         env:
         - name: CASSANDRA_USER
           valueFrom:
@@ -59,4 +64,6 @@ spec:
         volumeMounts:
         - name: data # must match the volume name, above
           mountPath: "/bitnami"
+        - name: scripts
+              mountPath: /usr/local/apache-cassandra/scripts
           
