@@ -1,0 +1,11 @@
+kind: Secret
+apiVersion: v1
+metadata:
+  name: cassandra-root
+  namespace: cassandra
+data:
+  # echo ca2a8579-f1c8-40b4-b6cb-35fedbc24448 | base64
+  password: Y2EyYTg1NzktZjFjOC00MGI0LWI2Y2ItMzVmZWRiYzI0NDQ4Cg==
+  # echo 6fe0f785-3ac7-4f55-b9d3-159699917a35 | base64
+  user: NmZlMGY3ODUtM2FjNy00ZjU1LWI5ZDMtMTU5Njk5OTE3YTM1Cg==
+type: Opaque
