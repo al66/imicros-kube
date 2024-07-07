@@ -39,8 +39,8 @@ spec:
           value: "eu-central-1"
         - name: MINIO_PROMETHEUS_AUTH_TYPE
           value: "public"
-        #- name: MINIO_BROWSER_REDIRECT_URL
-        #  value: https://dev.imicros.de/minio/
+        - name: MINIO_BROWSER_REDIRECT_URL
+          value: https://dev.imicros.de/minio/
         command: 
         - "/bin/sh"
         - "-ce"

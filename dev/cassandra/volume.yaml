@@ -13,4 +13,4 @@ spec:
   accessModes:
     - ReadWriteOnce
   hostPath:
-    path: "/mnt/cassandra-test-1"
+    path: "/mnt/cassandra-dev-1"
