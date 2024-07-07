@@ -15,5 +15,9 @@ spec:
     port: 9042
     targetPort: 9042
     protocol: TCP
+  - name: jmx
+    port: 7348
+    targetPort: 7348
+    protocol: TCP
   selector:
     app: cassandra
