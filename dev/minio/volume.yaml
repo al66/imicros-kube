@@ -13,4 +13,4 @@ spec:
   accessModes:
     - ReadWriteOnce
   hostPath:
-    path: "/mnt/minio-test-1"
+    path: "/mnt/minio-dev-1"

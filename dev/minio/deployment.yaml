@@ -42,7 +42,7 @@ spec:
         command: 
         - "/bin/sh"
         - "-ce"
-        - "/usr/bin/docker-entrypoint.sh minio server /storage -S /etc/minio/certs/ --address :9000 --console-address :9001"
+        - "/usr/bin/docker-entrypoint.sh minio server /data -S /etc/minio/certs/ --address :9000 --console-address :9001"
         # - "minio server /storage --console-address :9001"
         ports:
         - name: api
@@ -50,5 +50,5 @@ spec:
         - name: console
           containerPort: 9001
         volumeMounts:
-        - name: storage # must match the volume name, above
-          mountPath: "/storage"
+          - name: storage
+            mountPath: /data
