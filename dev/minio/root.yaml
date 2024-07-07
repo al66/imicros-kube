@@ -1,0 +1,11 @@
+kind: Secret
+apiVersion: v1
+metadata:
+  name: minio-root
+  namespace: minio
+data:
+  # echo 74544c89-2f17-4eda-9a59-674dd331cd86 | base64
+  password: NzQ1NDRjODktMmYxNy00ZWRhLTlhNTktNjc0ZGQzMzFjZDg2Cg==
+  # echo c1d59592-ac31-40ab-a6f7-db0201065409 | base64
+  user: YzFkNTk1OTItYWMzMS00MGFiLWE2ZjctZGIwMjAxMDY1NDA5Cg==
+type: Opaque
