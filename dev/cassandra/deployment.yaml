@@ -25,7 +25,7 @@ spec:
             defaultMode: 0666
             secretName: cassandra-jmx
       - name: scripts
-          configMap:
+        configMap:
             name: cassandra
             defaultMode: 0775
       containers:
