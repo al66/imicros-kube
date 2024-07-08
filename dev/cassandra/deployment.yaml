@@ -33,6 +33,10 @@ spec:
         image: bitnami/cassandra:latest
         #command: ['/bin/sh', '-c', '/usr/local/apache-cassandra/scripts/run_override.sh']
         env:
+        - name: - CASSANDRA_AUTHENTICATOR
+          value: "PasswordAuthenticator"
+        - name: CASSANDRA_PASSWORD_SEEDER
+          value: "yes"
         - name: CASSANDRA_USER
           valueFrom:
             secretKeyRef:

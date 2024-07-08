@@ -18,11 +18,13 @@ spec:
       - name: cassandra-web
         image: ipushc/cassandra-web
         env:
+        - name: HOST_PORT
+          value: '8083'
         - name: CASSANDRA_HOST
           value: 'cassandra.cassandra.svc.cluster.local'
         - name: CASSANDRA_PORT
           value: '9042'
-        - name: CASSANDRA_USERNAME
+        - name: CASSANDRA_USER
           valueFrom:
             secretKeyRef:
               name: cassandra-root
@@ -33,6 +35,6 @@ spec:
               name: cassandra-root
               key: password
         ports:
-        - containerPort: 80
+        - containerPort: 8083
           name: web
           
