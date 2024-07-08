@@ -8,8 +8,8 @@ metadata:
 spec:
   ports:
   - name: web
-    port: 8083
-    targetPort: 8083
+    port: 3000
+    targetPort: 3000
     protocol: TCP
   selector:
     app: cassandra-web

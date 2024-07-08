@@ -16,12 +16,11 @@ spec:
     spec:
       containers:
       - name: cassandra-web
-        image: ipushc/cassandra-web
+        image: markusgulden/cassandra-web
         env:
-        - name: HOST_PORT
-          value: '8083'
-        - name: CASSANDRA_HOST
-          value: 'cassandra.cassandra.svc.cluster.local'
+        # must be adopted according the clusterIP of the cassandra service
+        - name: CASSANDRA_HOST_IPS
+          value: '10.152.183.175'
         - name: CASSANDRA_PORT
           value: '9042'
         - name: CASSANDRA_USER
@@ -35,6 +34,6 @@ spec:
               name: cassandra-root
               key: password
         ports:
-        - containerPort: 8083
+        - containerPort: 3000
           name: web
           
