@@ -11,8 +11,10 @@ spec:
     - controller
     - broker
   storage:
-    type: persistent-claim
-    size: 10Gi
-    class: local-storage
-    deleteClaim: false
-    kraftMetadata: shared
+    type: jbod
+    volumes:
+      - id: 0
+        size: 10Gi
+        class: local-storage
+        deleteClaim: false
+        kraftMetadata: shared
