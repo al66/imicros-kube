@@ -6,6 +6,7 @@ metadata:
   labels:
     app: cassandra
 spec:
+  # fixed clusterIP due to cassandra-web requirement
   clusterIP: 10.152.183.175
   ports:
   - name: storage
