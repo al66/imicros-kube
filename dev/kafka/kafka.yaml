@@ -35,9 +35,9 @@ spec:
                   - key: kubernetes.io/hostname
                     operator: In
                     values:
-                    - dev-imicros-2
-                    - dev-imicros-3
-                    - dev-imicros-4
+                    - imicros-dev-2
+                    - imicros-dev-3
+                    - imicros-dev-4
   entityOperator:
     topicOperator: {}
     userOperator: {}
