@@ -14,8 +14,9 @@ spec:
     type: jbod
     volumes:
       - id: 0
-        type: persistent-claim
+        #type: persistent-claim
+        type: ephemeral
         size: 10Gi
-        class: local-storage
+        #class: local-storage
         deleteClaim: false
         kraftMetadata: shared
