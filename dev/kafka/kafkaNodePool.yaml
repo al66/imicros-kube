@@ -15,7 +15,14 @@ spec:
     volumes:
       - id: 0
         type: persistent-claim
-        class: ssd
         size: 10Gi
+        class: ssd
         deleteClaim: false
         kraftMetadata: shared
+        overrides:
+          - broker: 0
+            class: ssd-dev-2
+          - broker: 1
+            class: ssd-dev-3
+          - broker: 2
+            class: ssd-dev-4
