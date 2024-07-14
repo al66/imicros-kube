@@ -12,10 +12,10 @@ spec:
     - broker
   storage:
     type: jbod
-    class: ssd
     volumes:
       - id: 0
         type: persistent-claim
+        class: ssd
         size: 10Gi
-        deleteClaim: 
+        deleteClaim: false
         kraftMetadata: shared
