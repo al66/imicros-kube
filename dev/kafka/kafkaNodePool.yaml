@@ -10,3 +10,13 @@ spec:
   roles:
     - controller
     - broker
+  storage:
+    type: persistent-claim
+    volumes:
+      - id: 0
+        type: persistent-claim
+        class: ssd
+        volumeMode: Block
+        size: 10Gi
+        deleteClaim: false
+        kraftMetadata: shared
