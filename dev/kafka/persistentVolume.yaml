@@ -8,7 +8,7 @@ spec:
   accessModes:
   - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
-  storageClassName: ssd
+  storageClassName: ssd-dev-2
   local:
     path: /data/volumes/pv1
   nodeAffinity:
@@ -30,7 +30,7 @@ spec:
   accessModes:
   - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
-  storageClassName: ssd
+  storageClassName: ssd-dev-3
   local:
     path: /data/volumes/pv1
   nodeAffinity:
@@ -52,7 +52,7 @@ spec:
   accessModes:
   - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
-  storageClassName: ssd
+  storageClassName: ssd-dev-4
   local:
     path: /data/volumes/pv1
   nodeAffinity:

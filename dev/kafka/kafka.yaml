@@ -25,6 +25,19 @@ spec:
       transaction.state.log.min.isr: 2
       default.replication.factor: 3
       min.insync.replicas: 2
+    storage:
+      type: persistent-claim
+      class: ssd
+      size: 10Gi
+      deleteClaim: false
+      kraftMetadata: shared
+      overrides:
+        - broker: 0
+          class: ssd-dev-2
+        - broker: 1
+          class: ssd-dev-3
+        - broker: 2
+          class: ssd-dev-4
   entityOperator:
     topicOperator: {}
     userOperator: {}

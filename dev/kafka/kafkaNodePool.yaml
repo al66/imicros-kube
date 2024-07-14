@@ -10,12 +10,3 @@ spec:
   roles:
     - controller
     - broker
-  storage:
-    type: jbod
-    volumes:
-      - id: 0
-        type: persistent-claim
-        class: ssd
-        size: 10Gi
-        deleteClaim: false
-        kraftMetadata: shared
