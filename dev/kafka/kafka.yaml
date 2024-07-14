@@ -29,7 +29,6 @@ spec:
       type: persistent-claim
       class: ssd
       size: 10Gi
-      volumeMode: Block
       deleteClaim: false
       kraftMetadata: shared
       overrides:
