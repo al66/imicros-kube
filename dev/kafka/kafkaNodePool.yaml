@@ -13,6 +13,6 @@ spec:
   storage:
     type: persistent-claim
     size: 10Gi
-    class: ssd
+    class: local-storage
     deleteClaim: false
     kraftMetadata: shared
