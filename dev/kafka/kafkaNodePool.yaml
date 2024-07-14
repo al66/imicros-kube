@@ -6,7 +6,7 @@ metadata:
   labels:
     strimzi.io/cluster: dev-cluster
 spec:
-  replicas: 3
+  replicas: 2
   roles:
     - controller
     - broker
