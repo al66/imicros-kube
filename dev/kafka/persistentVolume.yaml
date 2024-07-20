@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: dev-cluster-dev-pool-0
+  name: data-0-dev-cluster-dev-pool-0 
   labels:
     strimzi.io/cluster: dev-cluster
 spec:
   claimRef:
-    name: dev-cluster-dev-pool-0
+    name: data-0-dev-cluster-dev-pool-0 
     namespace: kafka
   capacity:
     storage: 10Gi
@@ -30,12 +30,12 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: dev-cluster-dev-pool-1
+  name: data-0-dev-cluster-dev-pool-1
   labels:
     strimzi.io/cluster: dev-cluster
 spec:
   claimRef:
-    name: dev-cluster-dev-pool-1
+    name: data-0-dev-cluster-dev-pool-1
     namespace: kafka
   capacity:
     storage: 10Gi
@@ -58,12 +58,12 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: kdev-cluster-dev-pool-2
+  name: data-0-dev-cluster-dev-pool-2
   labels:
     strimzi.io/cluster: dev-cluster
 spec:
   claimRef:
-    name: dev-cluster-dev-pool-2
+    name: data-0-dev-cluster-dev-pool-2
     namespace: kafka
   capacity:
     storage: 10Gi
