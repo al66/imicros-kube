@@ -27,19 +27,6 @@ spec:
   #        - imicros-dev-5
   #        - imicros-dev-6
   #        - imicros-dev-7
-  podTemplateSpec:
-    spec:
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-            - matchExpressions:
-              - key: kubernetes.io/hostname
-                operator: In
-                values:
-                - imicros-dev-5
-                - imicros-dev-6
-                - imicros-dev-7
   storageConfig:
     cassandraDataVolumeClaimSpec:
       storageClassName: cassandra-local-ssd
@@ -48,6 +35,9 @@ spec:
       resources:
         requests:
           storage: 80Gi
+      selector:
+        matchLabels:
+          app: cassandra
   config:
     cassandra-yaml:
       num_tokens: 8
