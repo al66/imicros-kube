@@ -17,16 +17,28 @@ spec:
     requests:
       memory: "4Gi"
       cpu: "4000m"
-  nodeAffinity:
-    requiredDuringSchedulingIgnoredDuringExecution:
-      nodeSelectorTerms:
-      - matchExpressions:
-        - key: kubernetes.io/hostname
-          operator: In
-          values:
-          - imicros-dev-5
-          - imicros-dev-6
-          - imicros-dev-7
+  #nodeAffinity:
+  #  requiredDuringSchedulingIgnoredDuringExecution:
+  #    nodeSelectorTerms:
+  #    - matchExpressions:
+  #      - key: kubernetes.io/hostname
+  #        operator: In
+  #        values:
+  #        - imicros-dev-5
+  #        - imicros-dev-6
+  #        - imicros-dev-7
+  podTemplateSpec:
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+          - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+              - imicros-dev-5
+              - imicros-dev-6
+              - imicros-dev-7
   storageConfig:
     cassandraDataVolumeClaimSpec:
       storageClassName: cassandra-local-ssd
