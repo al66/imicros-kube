@@ -18,7 +18,7 @@ spec:
       memory: 4Gi
       cpu: "4"
   nodeAffinity:
-    required:
+    requiredDuringSchedulingIgnoredDuringExecution:
       nodeSelectorTerms:
       - matchExpressions:
         - key: kubernetes.io/hostname
