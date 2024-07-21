@@ -1,0 +1,46 @@
+apiVersion: cassandra.datastax.com/v1beta1
+kind: CassandraDatacenter
+metadata:
+  name: dev-datacenter
+  namespace: cass-operator
+spec:
+  clusterName: dev-cluster
+  serverType: cassandra
+  serverVersion: 3.11.7
+  managementApiAuth:
+    insecure: {}
+  size: 3
+  resources:
+    requests:
+      memory: 2Gi
+      cpu: 1000m
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - imicros-dev-5
+          - imicros-dev-6
+          - imicros-dev-7
+  storageConfig:
+    cassandraDataVolumeClaimSpec:
+      storageClassName: cassandra-local-ssd
+      accessModes:
+      - ReadWriteOnce
+      resources:
+        requests:
+          storage: 20Gi
+  config:
+    cassandra-yaml:
+      num_tokens: 8
+      authenticator: org.apache.cassandra.auth.PasswordAuthenticator
+      authorizer: org.apache.cassandra.auth.CassandraAuthorizer
+      role_manager: org.apache.cassandra.auth.CassandraRoleManager
+    jvm-options:
+      initial_heap_size: 2G
+      max_heap_size: 2G
+      additional-jvm-opts:
+      - -Dcassandra.system_distributed_replication_dc_names=dc1
+      - -Dcassandra.system_distributed_replication_per_dc=3
