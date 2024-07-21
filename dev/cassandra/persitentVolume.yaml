@@ -5,6 +5,9 @@ metadata:
   labels:
     app: cassandra
 spec:
+  claimRef:
+    name: server-data-dev-cluster-dev-datacenter-default-sts-0
+    namespace: cass-operator
   capacity:
     storage: 80Gi
   accessModes:
@@ -29,6 +32,9 @@ metadata:
   labels:
     app: cassandra
 spec:
+  claimRef:
+    name: server-data-dev-cluster-dev-datacenter-default-sts-1
+    namespace: cass-operator
   capacity:
     storage: 80Gi
   accessModes:
@@ -53,6 +59,9 @@ metadata:
   labels:
     app: cassandra
 spec:
+  claimRef:
+    name: server-data-dev-cluster-dev-datacenter-default-sts-2
+    namespace: cass-operator
   capacity:
     storage: 80Gi
   accessModes:
