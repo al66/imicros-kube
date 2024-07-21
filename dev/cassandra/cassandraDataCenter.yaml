@@ -12,11 +12,11 @@ spec:
   size: 3
   resources:
     limits:
-      memory: 6Gi
-      cpu: "4"
+      memory: "6Gi"
+      cpu: "4000m"
     requests:
-      memory: 4Gi
-      cpu: "4"
+      memory: "4Gi"
+      cpu: "4000m"
   nodeAffinity:
     requiredDuringSchedulingIgnoredDuringExecution:
       nodeSelectorTerms:
