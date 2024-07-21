@@ -6,7 +6,7 @@ metadata:
     app: cassandra
 spec:
   capacity:
-    storage: 20Gi
+    storage: 80Gi
   accessModes:
   - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
@@ -30,7 +30,7 @@ metadata:
     app: cassandra
 spec:
   capacity:
-    storage: 20Gi
+    storage: 80Gi
   accessModes:
   - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
@@ -54,7 +54,7 @@ metadata:
     app: cassandra
 spec:
   capacity:
-    storage: 20Gi
+    storage: 80Gi
   accessModes:
   - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain

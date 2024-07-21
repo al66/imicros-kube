@@ -34,7 +34,7 @@ spec:
       - ReadWriteOnce
       resources:
         requests:
-          storage: 20Gi
+          storage: 80Gi
   config:
     cassandra-yaml:
       num_tokens: 8
