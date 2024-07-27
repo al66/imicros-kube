@@ -11,6 +11,18 @@ spec:
       app: nats
   replicas: 3
   serviceName: "nats"
+  # same nodes like kafka
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: kubernetes.io/hostname
+            operator: In
+            values:
+            - imicros-dev-8
+            - imicros-dev-9
+            - imicros-dev-10
   template:
     metadata:
       labels:
@@ -72,17 +84,6 @@ spec:
               mountPath: /etc/nats-config
             - name: pid
               mountPath: /var/run/nats
-          # together with kafka
-          nodeAffinity:
-            requiredDuringSchedulingIgnoredDuringExecution:
-              nodeSelectorTerms:
-              - matchExpressions:
-                - key: kubernetes.io/hostname
-                  operator: In
-                  values:
-                  - imicros-dev-8
-                  - imicros-dev-9
-                  - imicros-dev-10
           resources:
             requests:
               memory: 4Gi
