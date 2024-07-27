@@ -9,11 +9,26 @@ data:
     http: 8222
 
     cluster {
+      name: "dev-cluster"
       port: 6222
+
+      # Authorization for route connections
+      # Other server can connect if they supply the credentials listed here
+      # This server will connect to discovered routes using this user
+      authorization {
+        user: route_user
+        password: pwd
+        timeout: 0.5
+      }
+
+      # This server establishes routes with these server.
+      # This server solicits new routes and Routes are actively solicited and connected to from this server.
+      # Other servers can connect to us if they supply the correct credentials
+      # in their routes definitions from above.
       routes [
-        nats://nats-0.nats.nats.svc:6222
-        nats://nats-1.nats.nats.svc:6222
-        nats://nats-2.nats.nats.svc:6222
+        nats://nats-0.nats.pod.cluster.local:6222
+        nats://nats-1.nats.pod.cluster.local:6222
+        nats://nats-2.nats.pod.cluster.local:6222
       ]
 
       cluster_advertise: $CLUSTER_ADVERTISE
