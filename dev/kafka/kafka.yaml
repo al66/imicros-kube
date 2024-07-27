@@ -30,7 +30,6 @@ spec:
       valueFrom:
         configMapKeyRef:
           name: kafka-metrics
-          namespace: kafka
           key: kafka-metrics-config.yml
     resources:
       requests:
