@@ -1,0 +1,18 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  name: cassandra-metrics
+  namespace: observability
+  labels:
+    app: cassandra
+    release: kube-prom-stack
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: cassandra
+  namespaceSelector:
+    matchNames:
+      - cass-operator
+  podMetricsEndpoints:
+  - path: /metrics
+    port: prometheus

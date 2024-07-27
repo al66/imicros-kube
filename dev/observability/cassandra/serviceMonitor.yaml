@@ -15,4 +15,4 @@ spec:
         insecureSkipVerify: true
   selector:
     matchLabels:
-      control-plane: cass-operator-controller-manager
+      app.kubernetes.io/instance: cass-operator

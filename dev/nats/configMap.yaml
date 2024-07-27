@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nats-config
+  namespace: nats
+data:
+  nats.conf: |
+    pid_file: "/var/run/nats/nats.pid"
+    http: 8222
+
+    cluster {
+      port: 6222
+      routes [
+        nats://nats-0.nats.nats.svc:6222
+        nats://nats-1.nats.nats.svc:6222
+        nats://nats-2.nats.nats.svc:6222
+      ]
+
+      cluster_advertise: $CLUSTER_ADVERTISE
+      connect_retries: 30
+    }
+
+    leafnodes {
+      port: 7422
+    }
