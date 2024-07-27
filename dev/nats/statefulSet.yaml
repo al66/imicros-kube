@@ -16,6 +16,7 @@ spec:
       labels:
         app: nats
     spec:
+      hsotname: $(statefulset name)-$(ordinal)
       # same nodes like kafka
       affinity:
         nodeAffinity:
