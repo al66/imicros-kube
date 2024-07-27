@@ -17,6 +17,6 @@ spec:
         type: persistent-claim
         #type: ephemeral
         size: 10Gi
-        class: local-storage
+        class: kafka-local-storage
         deleteClaim: false
         kraftMetadata: shared

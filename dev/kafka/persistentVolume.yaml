@@ -15,7 +15,7 @@ spec:
   - ReadWriteMany
   volumeMode: Filesystem
   persistentVolumeReclaimPolicy: Retain
-  storageClassName: local-storage
+  storageClassName: kafka-local-storage
   local:
     path: /data/volumes/pv1
   nodeAffinity:
@@ -25,7 +25,7 @@ spec:
         - key: kubernetes.io/hostname
           operator: In
           values:
-          - dev-imicros-2
+          - imicros-dev-2
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -43,7 +43,7 @@ spec:
   - ReadWriteOnce
   volumeMode: Filesystem
   persistentVolumeReclaimPolicy: Retain
-  storageClassName: local-storage
+  storageClassName: kafka-local-storage
   local:
     path: /data/volumes/pv1
   nodeAffinity:
@@ -53,7 +53,7 @@ spec:
         - key: kubernetes.io/hostname
           operator: In
           values:
-          - dev-imicros-3
+          - imicros-dev-3
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -71,7 +71,7 @@ spec:
   - ReadWriteOnce
   volumeMode: Filesystem
   persistentVolumeReclaimPolicy: Retain
-  storageClassName: local-storage
+  storageClassName: kafka-local-storage
   local:
     path: /data/volumes/pv1
   nodeAffinity:
@@ -81,4 +81,4 @@ spec:
         - key: kubernetes.io/hostname
           operator: In
           values:
-          - dev-imicros-4
+          - imicros-dev-4

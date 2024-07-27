@@ -25,19 +25,19 @@ spec:
       transaction.state.log.min.isr: 1
       default.replication.factor: 3
       min.insync.replicas: 2
-    template:
-      pod:
-        affinity:
-          nodeAffinity:
-            requiredDuringSchedulingIgnoredDuringExecution:
-              nodeSelectorTerms:
-                - matchExpressions:
-                  - key: kubernetes.io/hostname
-                    operator: In
-                    values:
-                    - imicros-dev-2
-                    - imicros-dev-3
-                    - imicros-dev-4
+    #template:
+    #  pod:
+    #    affinity:
+    #      nodeAffinity:
+    #        requiredDuringSchedulingIgnoredDuringExecution:
+    #          nodeSelectorTerms:
+    #            - matchExpressions:
+    #              - key: kubernetes.io/hostname
+    #                operator: In
+    #                values:
+    #                - imicros-dev-2
+    #                - imicros-dev-3
+    #                - imicros-dev-4
   entityOperator:
     topicOperator: {}
     userOperator: {}
