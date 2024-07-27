@@ -26,9 +26,7 @@ data:
       # Other servers can connect to us if they supply the correct credentials
       # in their routes definitions from above.
       routes [
-        nats://nats-0.nats.pod.cluster.local:6222
-        nats://nats-1.nats.pod.cluster.local:6222
-        nats://nats-2.nats.pod.cluster.local:6222
+        nats://route_user:pwd@nats:6222
       ]
 
       cluster_advertise: $CLUSTER_ADVERTISE
