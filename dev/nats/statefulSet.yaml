@@ -11,23 +11,6 @@ spec:
       app: nats
   replicas: 3
   serviceName: "nats"
-  nodeAffinity:
-    requiredDuringSchedulingIgnoredDuringExecution:
-      nodeSelectorTerms:
-      - matchExpressions:
-        - key: kubernetes.io/hostname
-          operator: In
-          values:
-          - imicros-dev-8
-          - imicros-dev-9
-          - imicros-dev-10
-  resources:
-    requests:
-      memory: 4Gi
-      cpu: 1
-    limits:
-      memory: 8Gi
-      cpu: 1
   template:
     metadata:
       labels:
@@ -89,6 +72,24 @@ spec:
               mountPath: /etc/nats-config
             - name: pid
               mountPath: /var/run/nats
+          # together with kafka
+          nodeAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+              nodeSelectorTerms:
+              - matchExpressions:
+                - key: kubernetes.io/hostname
+                  operator: In
+                  values:
+                  - imicros-dev-8
+                  - imicros-dev-9
+                  - imicros-dev-10
+          resources:
+            requests:
+              memory: 4Gi
+              cpu: 1
+            limits:
+              memory: 8Gi
+              cpu: 1
 
           # Liveness/Readiness probes against the monitoring
           #
