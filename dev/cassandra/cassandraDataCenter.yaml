@@ -7,6 +7,9 @@ spec:
   clusterName: dev-cluster
   serverType: cassandra
   serverVersion: 3.11.7
+  telemetry:
+      prometheus:
+        enabled: true
   managementApiAuth:
     insecure: {}
   size: 3
