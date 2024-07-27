@@ -1,18 +1,14 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: data-0-dev-cluster-dev-pool-0 
+  name: imicros-dev-8-pv1 
   labels:
     strimzi.io/cluster: dev-cluster
 spec:
-  claimRef:
-    name: data-0-dev-cluster-dev-pool-0 
-    namespace: kafka
   capacity:
-    storage: 10Gi
+    storage: 80Gi
   accessModes:
   - ReadWriteOnce
-  - ReadWriteMany
   volumeMode: Filesystem
   persistentVolumeReclaimPolicy: Retain
   storageClassName: kafka-local-storage
@@ -25,20 +21,17 @@ spec:
         - key: kubernetes.io/hostname
           operator: In
           values:
-          - imicros-dev-2
+          - imicros-dev-8
 ---
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: data-0-dev-cluster-dev-pool-1
+  name: imicros-dev-9-pv1
   labels:
     strimzi.io/cluster: dev-cluster
 spec:
-  claimRef:
-    name: data-0-dev-cluster-dev-pool-1
-    namespace: kafka
   capacity:
-    storage: 10Gi
+    storage: 80Gi
   accessModes:
   - ReadWriteOnce
   volumeMode: Filesystem
@@ -53,20 +46,17 @@ spec:
         - key: kubernetes.io/hostname
           operator: In
           values:
-          - imicros-dev-3
+          - imicros-dev-9
 ---
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: data-0-dev-cluster-dev-pool-2
+  name: imicros-dev-10-pv1
   labels:
     strimzi.io/cluster: dev-cluster
 spec:
-  claimRef:
-    name: data-0-dev-cluster-dev-pool-2
-    namespace: kafka
   capacity:
-    storage: 10Gi
+    storage: 80Gi
   accessModes:
   - ReadWriteOnce
   volumeMode: Filesystem
@@ -81,4 +71,4 @@ spec:
         - key: kubernetes.io/hostname
           operator: In
           values:
-          - imicros-dev-4
+          - imicros-dev-10
