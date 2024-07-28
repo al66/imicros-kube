@@ -21,7 +21,7 @@ spec:
         # must be adopted according the clusterIP of the cassandra service
         - name: CASSANDRA_HOST_IPS
           #value: 'dev-cluster-dev-datacenter-all-pods-service.cass-operator.svc.cluster.local'
-          value: '[10.1.0.48,10.1.0.86,10.1.0.91]'
+          value: '10.1.0.48,10.1.0.86,10.1.0.91'
         - name: CASSANDRA_PORT
           value: '9042'
         - name: USER    # CASSANDRA_USER not working
