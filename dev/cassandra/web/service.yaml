@@ -13,4 +13,4 @@ spec:
       protocol: TCP
       name: http
   selector:
-    app.kubernetes.io/name: cassndra-web
+    app.kubernetes.io/name: cassandra-web

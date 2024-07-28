@@ -22,7 +22,7 @@ spec:
           imagePullPolicy: IfNotPresent
           env:
           - name: HOST_PORT
-            value: "8080"
+            value: ":8080"
           - name: CASSANDRA_HOST
             value: "dev-cluster-dev-datacenter-all-pods-service.cass-operator.svc.cluster.local"
           - name: CASSANDRA_PORT
