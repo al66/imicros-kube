@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cassandra-web
+  namespace: cass-operator
+spec:
+  selector:
+    matchLabels:
+      app: cassandra-web
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: cassandra-web
+    spec:
+      containers:
+      - name: cassandra-web
+        image: markusgulden/cassandra-web
+        env:
+        # must be adopted according the clusterIP of the cassandra service
+        - name: CASSANDRA_HOST_IPS
+          value: 'dev-cluster-dev-datacenter-all-pods-service.cass-operator.svc.cluster.local'
+        - name: CASSANDRA_PORT
+          value: '9042'
+        - name: CASSANDRA_USER
+          valueFrom:
+            secretKeyRef:
+              name:  dev-cluster-superuser
+              key: username
+        - name: CASSANDRA_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name:  dev-cluster-superuser
+              key: password
+        ports:
+        - containerPort: 3000
+          name: web
+          
