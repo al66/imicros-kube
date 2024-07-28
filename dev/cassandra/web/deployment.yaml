@@ -34,6 +34,17 @@ spec:
             secretKeyRef:
               name:  dev-cluster-superuser
               key: password
+        args:
+        - --username
+          valueFrom:
+            secretKeyRef:
+              name:  dev-cluster-superuser
+              key: username
+        - --password
+          valueFrom:
+            secretKeyRef:
+              name:  dev-cluster-superuser
+              key: password
         ports:
         - containerPort: 3000
           name: web
