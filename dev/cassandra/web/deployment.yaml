@@ -34,7 +34,11 @@ spec:
             secretKeyRef:
               name:  dev-cluster-superuser
               key: password
+        #cmd: ["/run.sh", "--username", "$(CASSANDRA_USER)", "--password", "$(CASSANDRA_PASSWORD)"]
+        cmd: ["/run.sh"]
         args:
+        - "--hosts $(CASSANDRA_HOST_IPS) "
+        - "--port $(CASSANDRA_PORT) "
         - "--username $(CASSANDRA_USER) "
         - "--password $(CASSANDRA_PASSWORD) "
         ports:
