@@ -6,6 +6,7 @@ metadata:
   labels:
     app.kubernetes.io/name: nats-exporter
     app.kubernetes.io/instance: latest
+    release: kube-prom-stack
 spec:
   endpoints:
     - port: http
