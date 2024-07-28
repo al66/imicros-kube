@@ -20,15 +20,16 @@ spec:
         env:
         # must be adopted according the clusterIP of the cassandra service
         - name: CASSANDRA_HOST_IPS
-          value: 'dev-cluster-dev-datacenter-all-pods-service.cass-operator.svc.cluster.local'
+          #value: 'dev-cluster-dev-datacenter-all-pods-service.cass-operator.svc.cluster.local'
+          value: '[10.1.0.48,10.1.0.86,10.1.0.91]'
         - name: CASSANDRA_PORT
           value: '9042'
-        - name: CASSANDRA_USER
+        - name: USER    # CASSANDRA_USER not working
           valueFrom:
             secretKeyRef:
               name:  dev-cluster-superuser
               key: username
-        - name: CASSANDRA_PASSWORD
+        - name: PASSWORD   # CASSANDRA_PASSWORD not working
           valueFrom:
             secretKeyRef:
               name:  dev-cluster-superuser
