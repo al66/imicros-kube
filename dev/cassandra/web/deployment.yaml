@@ -24,27 +24,19 @@ spec:
           value: '10.1.0.48,10.1.0.86,10.1.0.91'
         - name: CASSANDRA_PORT
           value: '9042'
-        - name: USER    # CASSANDRA_USER not working
+        - name: CASSANDRA_USER 
           valueFrom:
             secretKeyRef:
               name:  dev-cluster-superuser
               key: username
-        - name: PASSWORD   # CASSANDRA_PASSWORD not working
+        - name: CASSANDRA_PASSWORD
           valueFrom:
             secretKeyRef:
               name:  dev-cluster-superuser
               key: password
         args:
-        - --username
-          valueFrom:
-            secretKeyRef:
-              name:  dev-cluster-superuser
-              key: username
-        - --password
-          valueFrom:
-            secretKeyRef:
-              name:  dev-cluster-superuser
-              key: password
+        - "--username $(CASSANDRA_USER) "
+        - "--password $(CASSANDRA_PASSWORD) "
         ports:
         - containerPort: 3000
           name: web
