@@ -28,12 +28,12 @@ spec:
         - name: CASSANDRA_USERNAME
           valueFrom:
             secretKeyRef:
-              name: cassandra-root
-              key: user
+              name: dev-cluster-superuser
+              key: username
         - name: CASSANDRA_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: cassandra-root
+              name: dev-cluster-superuser
               key: password
         ports:
         - containerPort: 3000
