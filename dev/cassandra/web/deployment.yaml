@@ -1,41 +1,44 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: cassandra-web-deployment
+  name: cassandra-web
   namespace: cass-operator
+  labels:
+    app.kubernetes.io/name: cassandra-web
 spec:
+  replicas: 1
   selector:
     matchLabels:
-      app: cassandra-web
-  strategy:
-    type: Recreate
+      app.kubernetes.io/name: cassandra-web
   template:
     metadata:
       labels:
         app: cassandra-web
+        app.kubernetes.io/name: cassandra-web
     spec:
       containers:
-      - name: cassandra-web
-        image: ipushc/cassandra-web
-        env:
-        - name: HOST_PORT
-          value: "3000"
-        # must be adopted according the clusterIP of the cassandra service
-        - name: CASSANDRA_HOST
-          value: "10.152.183.175"
-        - name: CASSANDRA_PORT
-          value: "9042"
-        - name: CASSANDRA_USERNAME
-          valueFrom:
-            secretKeyRef:
-              name: dev-cluster-superuser
-              key: username
-        - name: CASSANDRA_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: dev-cluster-superuser
-              key: password
-        ports:
-        - containerPort: 3000
-          name: http
-          
+        - name: cassandra-web
+          image: "ipushc/cassandra-web:latest"
+          imagePullPolicy: IfNotPresent
+          env:
+          - name: HOST_PORT
+            value: ":8080"
+          - name: CASSANDRA_HOST
+            value: "dev-cluster-dev-datacenter-all-pods-service.cass-operator.svc.cluster.local"
+          - name: CASSANDRA_PORT
+            value: "9042"
+          - name: CASSANDRA_USER
+            value: "cassandraweb"
+          - name: CASSANDRA_PASSWORD
+            value: "cassandraweb"
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+          resources:
+            limits:
+              cpu: "500m"
+              memory: "500Mi"
+            requests:
+              cpu: "500m"
+              memory: "500Mi"
