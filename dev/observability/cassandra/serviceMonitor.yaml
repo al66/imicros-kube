@@ -16,9 +16,9 @@ spec:
       app.kubernetes.io/instance: cassandra-dev-cluster
   endpoints:
     - path: /metrics
-      port: http
+      port: prometheus
       scrapeTimeout: 15s
-      targetPort: 9103
+      #targetPort: 9103
       interval: 15s
       metricRelabelings:
       - action: drop
