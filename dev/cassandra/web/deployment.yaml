@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: cassandra-web-deployment
-  namespace: cassandra
+  namespace: cass-operator
 spec:
   selector:
     matchLabels:
@@ -19,12 +19,12 @@ spec:
         image: ipushc/cassandra-web
         env:
         - name: HOST_PORT
-          value: 3000
+          value: "3000"
         # must be adopted according the clusterIP of the cassandra service
         - name: CASSANDRA_HOST
-          value: '10.152.183.175'
+          value: "10.152.183.175"
         - name: CASSANDRA_PORT
-          value: 9042
+          value: "9042"
         - name: CASSANDRA_USERNAME
           valueFrom:
             secretKeyRef:
