@@ -32,9 +32,6 @@ spec:
         - name: conf
           mountPath: /conf
           readOnly: false
-        - name: data
-          mountPath: /data
-          readOnly: false
         resources:
           limits:
             memory: "4Gi"
@@ -47,12 +44,3 @@ spec:
         configMap:
           name: redis-cluster
           defaultMode: 0755
-  volumeClaimTemplates:
-  - metadata:
-      name: data
-    spec:
-      storageClassName: redis-local-ssd
-      accessModes: [ "ReadWriteOnce" ]
-      resources:
-        requests:
-          storage: 8Gi
