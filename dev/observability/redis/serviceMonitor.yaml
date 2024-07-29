@@ -1,14 +1,20 @@
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
-Metadata:
+metadata:
+  name: redis-exporter
+  namespace: observability
   labels:
-    app: redis-exporter
-    name: redis-exporter
-  namespace: monitor
-  spec:
+    app.kubernetes.io/name: redis-exporter
+    release: kube-prom-stack
+spec:
   endpoints:
-  - interval: 15s
-    port: exporter-port
+    - interval: 15s
+      port: exporter-port
+      honorLabels: true
+      path: /metrics
+  namespaceSelector:
+    matchNames:
+      - redis
   selector:
     matchLabels:
-      app: redis-exporter
+      app.kubernetes.io/name: redis-exporter
