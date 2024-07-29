@@ -8,9 +8,10 @@ metadata:
     release: kube-prom-stack
 spec:
   endpoints:
-    - interval: 15s
-      port: exporter-port
+    - port: exporter-port
+      honorLabels: true
       path: /metrics
+      interval: 15s
   namespaceSelector:
     matchNames:
       - redis
