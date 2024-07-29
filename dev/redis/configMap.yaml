@@ -9,7 +9,7 @@ data:
     cluster-require-full-coverage no
     cluster-node-timeout 15000
     cluster-config-file /data/nodes.conf
-    maxmemory 2mb
+    maxmemory 2gb
     maxmemory-policy allkeys-lru
     save ""
     protected-mode no
