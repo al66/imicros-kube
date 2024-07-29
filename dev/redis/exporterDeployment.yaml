@@ -20,7 +20,8 @@ spec:
       - name: redis-exporter
         image: oliver006/redis_exporter:latest
         ports:
-          - containerPort: 9121
+        - containerPort: 9121
+          name: exporter-port
         env:
         - name: REDIS_ADDR
           value: 'redis://redis-cluster.redis.svc.cluster.local:6379'
