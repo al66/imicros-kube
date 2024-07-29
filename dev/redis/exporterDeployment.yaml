@@ -12,9 +12,10 @@ spec:
     metadata:
       labels:
         app: redis-exporter
-      #annotations:
-      #  prometheus.io/port: "9121"
-      #  prometheus.io/scrape: "true"
+        release: kube-prom-stack
+      annotations:
+        prometheus.io/port: "9121"
+        prometheus.io/scrape: "true"
     spec:
       containers:
       - name: redis-exporter
