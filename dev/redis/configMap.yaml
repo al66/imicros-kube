@@ -11,5 +11,5 @@ data:
     cluster-config-file /data/nodes.conf
     maxmemory 2mb
     maxmemory-policy allkeys-lru
-    appendonly yes
+    save ""
     protected-mode no
