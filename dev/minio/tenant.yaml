@@ -2,7 +2,7 @@ apiVersion: minio.min.io/v2
 kind: Tenant
 metadata:
   name: minio
-  namespace: minio-tenant
+  namespace: minio
   ## Optionally pass labels to be applied to the statefulset pods
   labels:
     app: minio
@@ -143,7 +143,7 @@ spec:
     ## Note that the operator does not support upgrading from standalone to distributed mode.
     - servers: 4
       ## custom name for the pool
-      name: pool-0
+      name: dev-pool
       ## Specify one or more Pod Topology Spread Constraints to apply to pods deployed in the MinIO pool.
       ## https://kubernetes.io/docs/concepts/workloads/pods/pod-topology-spread-constraints 
       topologySpreadConstraints: [ ]
@@ -163,7 +163,13 @@ spec:
         podAffinity: { }
         podAntiAffinity: { }
       ## Configure resource requests and limits for MinIO containers
-      resources: { }
+      resources:
+        requests:
+          memory: 12Gi
+          cpu: 4
+        limits:
+          memory: 14Gi
+          cpu: 6
       ## This VolumeClaimTemplate is used across all the volumes provisioned for MinIO Tenant in this
       ## Pool.
       volumeClaimTemplate:
