@@ -36,8 +36,9 @@ metadata:
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: minio
+  name: minio-operator
   labels:
-    name: minio
+    name: minio-operator
+
 
 
