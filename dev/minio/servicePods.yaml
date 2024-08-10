@@ -6,7 +6,7 @@ metadata:
   labels:
     app: minio
 spec:
-  clusterIP: None  # It means:‘You are a HeadlessService honey : )’
+  clusterIP: None
   ports:
     - port: 9000
       name: minio
