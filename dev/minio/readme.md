@@ -54,3 +54,11 @@ deployment.apps/minio-operator   2/2     2            2           44s
 NAME                                       DESIRED   CURRENT   READY   AGE
 replicaset.apps/minio-operator-744bc4b6f   2         2         2       43s
 ```
+
+
+Adopt rights for volumnes
+
+```
+sudo chown -R 1000 /data/volumes/pv1
+sudo chmod u+rxw /data/volumes/pv1
+```
