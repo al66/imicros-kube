@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: imicros-dev-11-pv1 
+  name: imicros-dev-11-pv1
   labels:
     pool: minio-pool-0
 spec:
   capacity:
-    storage: 140Gi
+    storage: 30Gi
   accessModes:
   - ReadWriteOnce
   volumeMode: Filesystem
@@ -26,12 +26,87 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
+  name: imicros-dev-11-pv2
+  labels:
+    pool: minio-pool-0
+spec:
+  capacity:
+    storage: 30Gi
+  accessModes:
+  - ReadWriteOnce
+  volumeMode: Filesystem
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: minio-local-storage
+  local:
+    path: /data/volumes/pv2
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - imicros-dev-11
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: imicros-dev-11-pv3 
+  labels:
+    pool: minio-pool-0
+spec:
+  capacity:
+    storage: 30Gi
+  accessModes:
+  - ReadWriteOnce
+  volumeMode: Filesystem
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: minio-local-storage
+  local:
+    path: /data/volumes/pv3
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - imicros-dev-11
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: imicros-dev-11-pv4 
+  labels:
+    pool: minio-pool-0
+spec:
+  capacity:
+    storage: 30Gi
+  accessModes:
+  - ReadWriteOnce
+  volumeMode: Filesystem
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: minio-local-storage
+  local:
+    path: /data/volumes/pv4
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - imicros-dev-11
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
   name: imicros-dev-12-pv1
   labels:
     pool: minio-pool-0
 spec:
   capacity:
-    storage: 140Gi
+    storage: 30Gi
   accessModes:
   - ReadWriteOnce
   volumeMode: Filesystem
@@ -51,12 +126,87 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
+  name: imicros-dev-12-pv2
+  labels:
+    pool: minio-pool-0
+spec:
+  capacity:
+    storage: 30Gi
+  accessModes:
+  - ReadWriteOnce
+  volumeMode: Filesystem
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: minio-local-storage
+  local:
+    path: /data/volumes/pv2
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - imicros-dev-12
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: imicros-dev-12-pv3
+  labels:
+    pool: minio-pool-0
+spec:
+  capacity:
+    storage: 30Gi
+  accessModes:
+  - ReadWriteOnce
+  volumeMode: Filesystem
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: minio-local-storage
+  local:
+    path: /data/volumes/pv3
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - imicros-dev-12
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: imicros-dev-12-pv4
+  labels:
+    pool: minio-pool-0
+spec:
+  capacity:
+    storage: 30Gi
+  accessModes:
+  - ReadWriteOnce
+  volumeMode: Filesystem
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: minio-local-storage
+  local:
+    path: /data/volumes/pv4
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - imicros-dev-12
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
   name: imicros-dev-13-pv1
   labels:
     pool: minio-pool-0
 spec:
   capacity:
-    storage: 140Gi
+    storage: 30Gi
   accessModes:
   - ReadWriteOnce
   volumeMode: Filesystem
@@ -76,12 +226,87 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
+  name: imicros-dev-13-pv2
+  labels:
+    pool: minio-pool-0
+spec:
+  capacity:
+    storage: 30Gi
+  accessModes:
+  - ReadWriteOnce
+  volumeMode: Filesystem
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: minio-local-storage
+  local:
+    path: /data/volumes/pv2
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - imicros-dev-13
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: imicros-dev-13-pv3
+  labels:
+    pool: minio-pool-0
+spec:
+  capacity:
+    storage: 30Gi
+  accessModes:
+  - ReadWriteOnce
+  volumeMode: Filesystem
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: minio-local-storage
+  local:
+    path: /data/volumes/pv3
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - imicros-dev-13
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: imicros-dev-13-pv4
+  labels:
+    pool: minio-pool-0
+spec:
+  capacity:
+    storage: 30Gi
+  accessModes:
+  - ReadWriteOnce
+  volumeMode: Filesystem
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: minio-local-storage
+  local:
+    path: /data/volumes/pv4
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - imicros-dev-13
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
   name: imicros-dev-14-pv1
   labels:
     pool: minio-pool-0
 spec:
   capacity:
-    storage: 140Gi
+    storage: 30Gi
   accessModes:
   - ReadWriteOnce
   volumeMode: Filesystem
@@ -89,6 +314,81 @@ spec:
   storageClassName: minio-local-storage
   local:
     path: /data/volumes/pv1
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - imicros-dev-14
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: imicros-dev-14-pv2
+  labels:
+    pool: minio-pool-0
+spec:
+  capacity:
+    storage: 30Gi
+  accessModes:
+  - ReadWriteOnce
+  volumeMode: Filesystem
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: minio-local-storage
+  local:
+    path: /data/volumes/pv2
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - imicros-dev-14
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: imicros-dev-14-pv3
+  labels:
+    pool: minio-pool-0
+spec:
+  capacity:
+    storage: 30Gi
+  accessModes:
+  - ReadWriteOnce
+  volumeMode: Filesystem
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: minio-local-storage
+  local:
+    path: /data/volumes/pv3
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - imicros-dev-14
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: imicros-dev-14-pv4
+  labels:
+    pool: minio-pool-0
+spec:
+  capacity:
+    storage: 30Gi
+  accessModes:
+  - ReadWriteOnce
+  volumeMode: Filesystem
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: minio-local-storage
+  local:
+    path: /data/volumes/pv4
   nodeAffinity:
     required:
       nodeSelectorTerms:
