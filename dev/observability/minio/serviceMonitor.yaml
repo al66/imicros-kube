@@ -1,0 +1,21 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: minio
+  namespace: observability
+  labels:
+    app.kubernetes.io/name: minio
+    app.kubernetes.io/instance: latest
+    release: kube-prom-stack
+spec:
+  endpoints:
+    - port: http
+      honorLabels: true
+    - path: /minio/v2/metrics/cluster
+  namespaceSelector:
+    matchNames:
+      - minio
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: minio-hl
+      app.kubernetes.io/instance: latest
