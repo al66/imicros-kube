@@ -148,7 +148,7 @@ spec:
       ## https://kubernetes.io/docs/concepts/workloads/pods/pod-topology-spread-constraints 
       topologySpreadConstraints: [ ]
       ## volumesPerServer specifies the number of volumes attached per MinIO Tenant Pod / Server.
-      volumesPerServer: 4
+      volumesPerServer: 1
       ## nodeSelector parameters for MinIO Pods. It specifies a map of key-value pairs. For the pod to be
       ## eligible to run on a node, the node must have each of the
       ## indicated key-value pairs as labels.
