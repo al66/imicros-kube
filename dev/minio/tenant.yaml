@@ -49,10 +49,26 @@ spec:
   ## for details.
   podManagementPolicy: Parallel
   ## Secret with credentials and configurations to be used by MinIO Tenant.
-  configuration:
-    name: storage-configuration
+  configuration: { }
+  #  name: storage-configuration
   ## Add environment variables to be set in MinIO container (https://github.com/minio/minio/tree/master/docs/config)
-  env: [ ]
+  env:
+    - name: MINIO_ROOT_USER
+      value: "minio"
+    - name: MINIO_ROOT_PASSWORD
+      value: "minio123"
+    - name: MINIO_REGION_NAME
+      value: "eu-central-1"
+    - name: MINIO_STORAGE_CLASS_STANDARD
+      value: "EC:2"
+    - name: MINIO_BROWSER
+      value: "on"    
+    - name: MINIO_PROMETHEUS_JOB_ID
+      value: "minio-prom-job"
+    - name: MINIO_PROMETHEUS_URL
+      value: "http://kube-prom-stack-kube-prome-prometheus.observability.svc.cluster.local" 
+    - name: MINIO_PROMETHEUS_AUTH_TYPE
+      value: "public"
   ## serviceMetadata allows passing additional labels and annotations to MinIO and Console specific
   ## services created by the operator.
   serviceMetadata:

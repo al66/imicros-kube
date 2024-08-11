@@ -11,7 +11,7 @@ spec:
   endpoints:
     - port: http
       honorLabels: true
-    - path: /minio/v2/metrics/cluster
+    - path: /minio/v3/metrics/cluster
   namespaceSelector:
     matchNames:
       - minio
