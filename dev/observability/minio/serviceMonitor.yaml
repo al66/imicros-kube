@@ -9,7 +9,7 @@ metadata:
 spec:
   endpoints:
     - port: http-minio
-      path: /minio/v3/metrics/cluster
+      path: /minio/v2/metrics/cluster
       scrapeTimeout: 15s
       interval: 15s
   namespaceSelector:
@@ -30,7 +30,7 @@ metadata:
 spec:
   endpoints:
     - port: http-minio
-      path: /minio/v3/metrics/bucket
+      path: /minio/v2/metrics/bucket
       scrapeTimeout: 15s
       interval: 15s
   namespaceSelector:
@@ -51,7 +51,7 @@ metadata:
 spec:
   endpoints:
     - port: http-minio
-      path: /minio/v3/metrics/node
+      path: /minio/v2/metrics/node
       scrapeTimeout: 15s
       interval: 15s
   namespaceSelector:
@@ -72,7 +72,7 @@ metadata:
 spec:
   endpoints:
     - port: http-minio
-      path: /minio/v3/metrics/resource
+      path: /minio/v2/metrics/resource
       scrapeTimeout: 15s
       interval: 15s
   namespaceSelector:
