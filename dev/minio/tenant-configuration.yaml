@@ -10,6 +10,6 @@ stringData:
     export MINIO_ROOT_PASSWORD="minio123"
     export MINIO_STORAGE_CLASS_STANDARD="EC:2"
     export MINIO_BROWSER="on"
-    export MINIO_PROMETHEUS_JOB_ID="minio-prom-job"
-    export MINIO_PROMETHEUS_URL="http://kube-prom-stack-kube-prome-prometheus.observability.svc.cluster.local"
     export MINIO_PROMETHEUS_AUTH_TYPE="public"
+    export MINIO_PROMETHEUS_JOB_ID="minio-prom-job"
+    export MINIO_PROMETHEUS_URL="http://kube-prom-stack-kube-prome-prometheus.observability.svc.cluster.local:9090"

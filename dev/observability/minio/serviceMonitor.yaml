@@ -8,17 +8,15 @@ metadata:
     release: kube-prom-stack
 spec:
   endpoints:
-    - port: "9000"
+    - port: http-minio
       path: /minio/v3/metrics/cluster
       scrapeTimeout: 15s
-      #targetPort: 9103
       interval: 15s
   namespaceSelector:
     matchNames:
       - minio
   selector:
     matchLabels:
-      app.kubernetes.io/name: minio-hl
       v1.min.io/tenant: minio
 ---
 apiVersion: monitoring.coreos.com/v1
@@ -31,7 +29,7 @@ metadata:
     release: kube-prom-stack
 spec:
   endpoints:
-    - port: "9000"
+    - port: http-minio
       path: /minio/v3/metrics/bucket
       scrapeTimeout: 15s
       interval: 15s
@@ -40,7 +38,6 @@ spec:
       - minio
   selector:
     matchLabels:
-      app.kubernetes.io/name: minio-hl
       v1.min.io/tenant: minio
 ---
 apiVersion: monitoring.coreos.com/v1
@@ -53,7 +50,7 @@ metadata:
     release: kube-prom-stack
 spec:
   endpoints:
-    - port: "9000"
+    - port: http-minio
       path: /minio/v3/metrics/node
       scrapeTimeout: 15s
       interval: 15s
@@ -62,7 +59,6 @@ spec:
       - minio
   selector:
     matchLabels:
-      app.kubernetes.io/name: minio-hl
       v1.min.io/tenant: minio
 ---
 apiVersion: monitoring.coreos.com/v1
@@ -75,7 +71,7 @@ metadata:
     release: kube-prom-stack
 spec:
   endpoints:
-    - port: "9000"
+    - port: http-minio
       path: /minio/v3/metrics/resource
       scrapeTimeout: 15s
       interval: 15s
@@ -84,5 +80,4 @@ spec:
       - minio
   selector:
     matchLabels:
-      app.kubernetes.io/name: minio-hl
       v1.min.io/tenant: minio
