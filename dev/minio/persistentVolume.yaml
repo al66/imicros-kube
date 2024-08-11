@@ -6,7 +6,7 @@ metadata:
     pool: minio-pool-0
 spec:
   capacity:
-    storage: 140Gi
+    storage: 40Gi
   accessModes:
   - ReadWriteOnce
   volumeMode: Filesystem
@@ -31,7 +31,7 @@ metadata:
     pool: minio-pool-0
 spec:
   capacity:
-    storage: 140Gi
+    storage: 40Gi
   accessModes:
   - ReadWriteOnce
   volumeMode: Filesystem
@@ -56,7 +56,7 @@ metadata:
     pool: minio-pool-0
 spec:
   capacity:
-    storage: 140Gi
+    storage: 40Gi
   accessModes:
   - ReadWriteOnce
   volumeMode: Filesystem
@@ -81,7 +81,7 @@ metadata:
     pool: minio-pool-0
 spec:
   capacity:
-    storage: 140Gi
+    storage: 40Gi
   accessModes:
   - ReadWriteOnce
   volumeMode: Filesystem
