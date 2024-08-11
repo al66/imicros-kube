@@ -1,21 +1,88 @@
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
-  name: minio
+  name: minio-cluster
   namespace: observability
   labels:
-    app.kubernetes.io/name: minio
-    app.kubernetes.io/instance: latest
+    app.kubernetes.io/name: minio-cluster
     release: kube-prom-stack
 spec:
   endpoints:
-    - port: http
-      honorLabels: true
-    - path: /minio/v3/metrics/cluster
+    - port: "9000"
+      path: /minio/v3/metrics/cluster
+      scrapeTimeout: 15s
+      #targetPort: 9103
+      interval: 15s
   namespaceSelector:
     matchNames:
       - minio
   selector:
     matchLabels:
       app.kubernetes.io/name: minio-hl
-      app.kubernetes.io/instance: latest
+      v1.min.io/tenant: minio
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: minio-bucket
+  namespace: observability
+  labels:
+    app.kubernetes.io/name: minio-bucket
+    release: kube-prom-stack
+spec:
+  endpoints:
+    - port: "9000"
+      path: /minio/v3/metrics/bucket
+      scrapeTimeout: 15s
+      interval: 15s
+  namespaceSelector:
+    matchNames:
+      - minio
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: minio-hl
+      v1.min.io/tenant: minio
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: minio-node
+  namespace: observability
+  labels:
+    app.kubernetes.io/name: minio-node
+    release: kube-prom-stack
+spec:
+  endpoints:
+    - port: "9000"
+      path: /minio/v3/metrics/node
+      scrapeTimeout: 15s
+      interval: 15s
+  namespaceSelector:
+    matchNames:
+      - minio
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: minio-hl
+      v1.min.io/tenant: minio
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: minio-resource
+  namespace: observability
+  labels:
+    app.kubernetes.io/name: minio-resource
+    release: kube-prom-stack
+spec:
+  endpoints:
+    - port: "9000"
+      path: /minio/v3/metrics/resource
+      scrapeTimeout: 15s
+      interval: 15s
+  namespaceSelector:
+    matchNames:
+      - minio
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: minio-hl
+      v1.min.io/tenant: minio
