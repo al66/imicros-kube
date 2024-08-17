@@ -39,6 +39,15 @@ metadata:
   name: minio-operator
   labels:
     name: minio-operator
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: ""
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: development
+  labels:
+    name: development
 
 
 
