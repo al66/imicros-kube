@@ -1,0 +1,93 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: development
+  namespace: development
+spec:
+  selector:
+    matchLabels:
+      app: development
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: development
+    spec:
+      volumes:
+      - name: modules
+        persistentVolumeClaim:
+          claimName: development
+      containers:
+      - name: development
+        image: node:lts-alpine
+        stdin: true
+        tty: true
+        env:
+        - name: TEST_ENV
+          value: "development"
+        #  ---- CASSANDRA ----
+        - name: CASSANDRA_CONTACTPOINTS
+          value: "dev-cluster-dev-datacenter-all-pods-service.cass-operator.svc.cluster.local"
+        - name: CASSANDRA_DATACENTER
+          value: "dev-datacenter"
+        - name: CASSANDRA_KEYSPACE_AUTH
+          value: "imicros_auth"
+        - name: CASSANDRA_KEYSPACE_EXCHANGE
+          value: "imicros_exchange"
+        - name: CASSANDRA_KEYSPACE_FLOW 
+          value: "imicros_flow"
+        - name: CASSANDRA_KEYSPACE_DECISION
+          value: "imicros_decision"
+        - name: CASSANDRA_PORT
+          value: "9042"
+        - name: CASSANDRA_USER
+          valueFrom:
+            secretKeyRef:
+              name: cassandra-user-credentials
+              key: username
+        - name: CASSANDRA_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: cassandra-user-credentials
+              key: password
+        #  ---- MINIO ----
+        - name: MINIO_ENDPOINT
+          value: "minio-hl.minio.svc.cluster.local"
+        - name: MINIO_PORT
+          value: "9000"
+        - name: MINIO_NO_SSL
+          value: "true"
+        - name: MINIO_ACCESS_KEY
+          valueFrom:
+            secretKeyRef:
+              name: minio-user-credentials
+              key: username
+        - name: MINIO_SECRET_KEY
+          valueFrom:
+            secretKeyRef:
+              name: minio-user-credentials
+              key: password
+        #  ---- KAFKA ----
+        - name: KAFKA_BROKER
+          value: "dev-cluster-kafka-brokers.kafka.svc.cluster.local:9092"
+        - name: KAFKAJS_NO_PARTITIONER_WARNING
+          value: "1"
+        #  ---- REDIS ----
+        #- name: REDIS_HOST
+        #  value: "dev-cluster-redis.redis.svc.cluster.local"
+        #- name: REDIS_PORT
+        #  value: "6379"
+        #  ---- NATS ----
+        - name: NATS_TRANSPORTER
+          value: "nats://nats.nats.svc.cluster.local:4222"
+        volumeMounts:
+        - name: modules # must match the volume name, above
+          mountPath: "/modules"
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+          limits:
+            cpu: 1000m
+            memory: 1Gi

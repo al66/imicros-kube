@@ -1,6 +1,6 @@
 
 
-Install the minio operator first!
+## Install the minio operator first!
 
 https://min.io/docs/minio/kubernetes/upstream/operations/installation.html#deploy-operator-kubernetes
 
@@ -61,4 +61,21 @@ Adopt rights for volumnes
 ```
 sudo chown -R 1000 /data/volumes/pv1
 sudo chmod u+rxw /data/volumes/pv1
+```
+
+## credentials for console user
+
+```
+$ kubectl apply -f ./dev/minio/secretConsoleUser.yaml
+```
+
+Check result with:
+```
+$ kubectl describe secret console-user-credentials -n minio
+```
+The secret should have now the annotation secret-generator.v1.mittwald.de/autogenerate-generated-at: ... and a password key.
+
+For manual creation of teh console user the password can be grabed with:
+```
+$ kubectl get secrets/console-user-credentials -n minio --template={{.data.CONSOLE_SECRET_KEY}} | base64 -d
 ```

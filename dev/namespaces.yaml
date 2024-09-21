@@ -45,6 +45,13 @@ metadata:
 apiVersion: v1
 kind: Namespace
 metadata:
+  name: imicros
+  labels:
+    name: imicros
+---
+apiVersion: v1
+kind: Namespace
+metadata:
   name: development
   labels:
     name: development

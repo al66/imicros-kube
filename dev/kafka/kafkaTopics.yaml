@@ -1,0 +1,70 @@
+apiVersion: kafka.strimzi.io/v1beta2
+kind: KafkaTopic
+metadata:
+  name: clock
+  namespace: kafka
+  labels:
+    strimzi.io/cluster: dev-cluster
+spec:
+  partitions: 1
+  replicas: 1
+  config:
+    # 3 days retention
+    retention.ms: 259200000
+---
+apiVersion: kafka.strimzi.io/v1beta2
+kind: KafkaTopic
+metadata:
+  name: events
+  namespace: kafka
+  labels:
+    strimzi.io/cluster: dev-cluster
+spec:
+  partitions: 12
+  replicas: 3
+  config:
+    # 7 days retention
+    retention.ms: 604800000
+---
+apiVersion: kafka.strimzi.io/v1beta2
+kind: KafkaTopic
+metadata:
+  name: instance
+  namespace: kafka
+  labels:
+    strimzi.io/cluster: dev-cluster
+spec:
+  partitions: 12
+  replicas: 3
+  config:
+    # 7 days retention
+    retention.ms: 604800000
+---
+apiVersion: kafka.strimzi.io/v1beta2
+kind: KafkaTopic
+metadata:
+  name: messages
+  namespace: kafka
+  labels:
+    strimzi.io/cluster: dev-cluster
+spec:
+  partitions: 12
+  replicas: 3
+  config:
+    # 7 days retention
+    retention.ms: 604800000
+---
+apiVersion: kafka.strimzi.io/v1beta2
+kind: KafkaTopic
+metadata:
+  name: timer
+  namespace: kafka
+  labels:
+    strimzi.io/cluster: dev-cluster
+spec:
+  partitions: 12
+  replicas: 3
+  config:
+    # 7 days retention
+    retention.ms: 604800000
+

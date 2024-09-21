@@ -31,7 +31,7 @@ spec:
   ## Create users in the Tenant using this field. Make sure to create secrets per user added here.
   ## Secret should follow the format used in `minio-creds-secret`.
   users:
-    - name: storage-user
+    - name: console-user-credentials
   ## Create buckets using the console user
   # buckets:
   #   - name: "test-bucket1"
